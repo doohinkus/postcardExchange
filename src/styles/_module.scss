@@ -1,0 +1,14 @@
+.nav{
+  &__menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    &__item{
+      font-family: Vollkorn-Bold;
+      font-size: 22.62px;
+      color: #0F3B44;
+      padding: $padding;
+    }
+
+  }
+}
