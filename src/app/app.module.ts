@@ -10,6 +10,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { masterFirebaseConfig } from './api-keys'
 import { AngularFireModule } from 'angularfire2';
 import { TestComponent } from './test/test.component';
+import { KeyPipe } from './key.pipe';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -21,7 +22,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
+    KeyPipe
   ],
   imports: [
     BrowserModule,

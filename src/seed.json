@@ -1,7 +1,6 @@
-{
-  "users": {
-    "name": "R. Perez",
-    "namePostcard" : {
+{ "users": [{
+    "name": "Rafael",
+    "namePostcard": {
       "sent": true,
       "received": false,
       "lat": 10.00,
@@ -13,15 +12,13 @@
       "lat": 30.00,
       "lon": 10.00
     }
-  },
-  "gallery": {
+  }],
+  "gallery": [{
     "image": {
       "url": "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150",
       "lat": 30.00,
       "lon": 100.00,
       "userID": "username"
     }
-
-  }
-
+    }]
 }
