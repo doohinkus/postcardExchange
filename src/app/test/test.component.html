@@ -1,5 +1,13 @@
 <div *ngFor="let user of users | async">
   {{user.name}}
-  {{user.namePostcard.received}}
+
+   <div *ngFor="let partner of user.partners">
+     {{partner.id}}
+   </div>
+   <div *ngFor="let postcard of user.postcards">
+     {{postcard[0].lat}}
+     {{postcard[1].lat}}
+   </div>
+
 
 </div>

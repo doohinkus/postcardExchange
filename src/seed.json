@@ -1,24 +1,37 @@
 { "users": [{
     "name": "Rafael",
-    "namePostcard": {
-      "sent": true,
-      "received": false,
-      "lat": 10.00,
-      "lon": 30.00
-    },
-    "partnerPostcard": {
-      "sent": true,
-      "received": false,
-      "lat": 30.00,
-      "lon": 10.00
-    }
+    "address": "123 Fake Street, Sandy, OR 97055",
+    "postcards":[
+      [{
+        "type": "userPostcard",
+        "lat": 100.89,
+        "lon": 400.89,
+        "received": false,
+        "sent": true
+      },
+      {
+          "type": "partnerPostcard",
+          "lat": 400.89,
+          "lon": 100.89,
+          "received": false,
+          "sent": true
+      }]
+      ],
+      "partners":[{
+        "id": "asdfsd"
+        }]
+
   }],
   "gallery": [{
     "image": {
       "url": "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150",
       "lat": 30.00,
       "lon": 100.00,
-      "userID": "username"
+      "userID": "username",
+      "comments": [{
+        "author": "Joe Photo",
+        "comment": "awesome work!!!"
+        }]
     }
     }]
 }
