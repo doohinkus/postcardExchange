@@ -3,6 +3,8 @@
     "address": "123 Fake Street, Sandy, OR 97055",
     "postcards":[
       [{
+        "city": "san francisco",
+        "state": "California",
         "type": "userPostcard",
         "lat": 100.89,
         "lon": 400.89,
@@ -10,6 +12,8 @@
         "sent": true
       },
       {
+          "city": "sandy",
+          "state": "oregon",
           "type": "partnerPostcard",
           "lat": 400.89,
           "lon": 100.89,

@@ -11,6 +11,7 @@ import { masterFirebaseConfig } from './api-keys'
 import { AngularFireModule } from 'angularfire2';
 import { TestComponent } from './test/test.component';
 import { KeyPipe } from './key.pipe';
+import { AddComponent } from './add/add.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -23,7 +24,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     TestComponent,
-    KeyPipe
+    KeyPipe,
+    AddComponent
   ],
   imports: [
     BrowserModule,
