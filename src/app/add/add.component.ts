@@ -18,7 +18,7 @@ export class AddComponent implements OnInit {
   }
   submitForm(address:string, name:string){
 
-    var newUser: User = new User(address, name, [{"id":"test0"}], [{
+    var newUser: User = new User(address, name, [{"id":"test0"}], [[{
       "lat": 1000,
       "lon": 90000,
       "received": false,
@@ -35,7 +35,7 @@ export class AddComponent implements OnInit {
       "state": "California",
       "city": "SJ",
       "type": "partnerPostcard"
-    }]);
+    }]]);
     this.UserServiceService.addUser(newUser);
     // var newUser: User = new User(address, name, placeholderPartner, placeholderPostcard);
 
