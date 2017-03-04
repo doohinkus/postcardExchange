@@ -12,6 +12,7 @@ import { AngularFireModule } from 'angularfire2';
 import { TestComponent } from './test/test.component';
 import { KeyPipe } from './key.pipe';
 import { AddComponent } from './add/add.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -25,7 +26,8 @@ export const firebaseConfig = {
     AppComponent,
     TestComponent,
     KeyPipe,
-    AddComponent
+    AddComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

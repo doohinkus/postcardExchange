@@ -16,8 +16,8 @@ export class UserServiceService {
   addUser(newUser: User){
     this.users.push(newUser);
   }
-  getUserbyID(userID: string){
-    return this.angularFire.database.object('/users/' + userID);
+  getUserbyId(userId: string){
+    return this.angularFire.database.object('/users/' + userId);
   }
 
 

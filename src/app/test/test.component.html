@@ -1,5 +1,5 @@
 <div *ngFor="let user of users | async">
-  {{user.name}}
+  <a href="profile/{{user.$key}}">{{user.name}}</a>
 
    <div *ngFor="let partner of user.partners">
      {{partner.id}}

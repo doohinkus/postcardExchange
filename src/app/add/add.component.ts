@@ -37,7 +37,6 @@ export class AddComponent implements OnInit {
       "type": "partnerPostcard"
     }]]);
     this.UserServiceService.addUser(newUser);
-    // var newUser: User = new User(address, name, placeholderPartner, placeholderPostcard);
 
   }
 
