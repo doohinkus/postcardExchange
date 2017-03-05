@@ -13,17 +13,25 @@ import { UserServiceService } from "../user-service.service";
 })
 export class UserDetailComponent implements OnInit {
   userId:string;
+  name:string;
+  address:string;
   userToDisplay;
   constructor(
     private userServiceService: UserServiceService,
     private location: Location,
     private route: ActivatedRoute
   ) { }
+
+
   ngOnInit() {
     this.route.params.forEach((urlParameters)=>{
       this.userId = urlParameters["id"];
     });
-    this.userToDisplay = this.userServiceService.getUserbyId(this.userId);
+
+  }
+
+  editUser(userId:string, address: string, name: string){
+    this.userServiceService.editUser(userId, address, name);
   }
 
 }

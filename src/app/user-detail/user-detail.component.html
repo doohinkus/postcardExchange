@@ -1,4 +1,17 @@
 <p>
   user-detail works!
 </p>
-{{(userToDisplay | async)?.name}}
+
+{{userToDisplay?.name}}
+
+
+
+<!-- <app-edit [activeUser]="userToDisplay | async"></app-edit> -->
+
+<h2>in detail</h2>
+<label>name</label>
+<input [(ngModel)]="name" placeholder="{{userToDisplay?.name}}">{{userToDisplay?.name}}
+<label>address</label>
+<input [(ngModel)]="address" placeholder="{{userToDisplay?.address}}">
+
+<button (click)="editUser(this.userId, name, address)">Edit</button>

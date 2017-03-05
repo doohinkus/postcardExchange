@@ -1,0 +1,9 @@
+<p>
+  edit works!
+</p>
+<label>name</label>
+<input [(ngModel)]="userToDisplay.name">
+<label>address</label>
+<input [(ngModel)]="userToDisplay.address">
+
+<button (click)="updateUser(userToDisplay)">Edit</button>

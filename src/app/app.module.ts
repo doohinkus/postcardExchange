@@ -13,6 +13,7 @@ import { TestComponent } from './test/test.component';
 import { KeyPipe } from './key.pipe';
 import { AddComponent } from './add/add.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { EditComponent } from './edit/edit.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -27,7 +28,8 @@ export const firebaseConfig = {
     TestComponent,
     KeyPipe,
     AddComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
