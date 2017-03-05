@@ -3,15 +3,15 @@
 </p>
 
 {{userToDisplay?.name}}
-
+{{this.userId}}
 
 
 <!-- <app-edit [activeUser]="userToDisplay | async"></app-edit> -->
 
 <h2>in detail</h2>
 <label>name</label>
-<input [(ngModel)]="name" placeholder="{{userToDisplay?.name}}">{{userToDisplay?.name}}
+<input [(ngModel)]="name">{{userToDisplay?.name}}
 <label>address</label>
-<input [(ngModel)]="address" placeholder="{{userToDisplay?.address}}">
+<input [(ngModel)]="address">
 
-<button (click)="editUser(this.userId, name, address)">Edit</button>
+<button (click)="editUser(this.userId, this.name, this.address)">Edit</button>

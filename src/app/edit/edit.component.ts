@@ -12,8 +12,8 @@ import { UserServiceService } from "../user-service.service";
 export class EditComponent implements OnInit {
   @Input() activeUser;
   constructor(private UserServiceService: UserServiceService) { }
-  editUser(address:string, name:string){
-    this.UserServiceService.editUser(this.activeUser);
+  editUser(id: string, address:string, name:string){
+    this.UserServiceService.editUser(id, address, name);
   }
 
   ngOnInit() {

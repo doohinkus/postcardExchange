@@ -13,8 +13,8 @@ import { UserServiceService } from "../user-service.service";
 })
 export class UserDetailComponent implements OnInit {
   userId:string;
-  name:string;
-  address:string;
+  name:string = null;
+  address:string =null;
   userToDisplay;
   constructor(
     private userServiceService: UserServiceService,
@@ -26,12 +26,18 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((urlParameters)=>{
       this.userId = urlParameters["id"];
-    });
+    })
 
   }
-
   editUser(userId:string, address: string, name: string){
-    this.userServiceService.editUser(userId, address, name);
+    console.log(userId, address, name)
+    if (address===null || name===null || address==="" || name===""){
+      alert("no blanks");
+    }else{
+      this.userServiceService.editUser(userId, address, name);
+    }
   }
+
+
 
 }
