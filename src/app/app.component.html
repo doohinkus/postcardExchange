@@ -1,38 +1,36 @@
 <div class="container">
-  <div class="social">
-    <div class="social__link">
-       twitter
-    </div>
-    <div class="social__link">
-       instagram
-    </div>
-    <div class="social__link">
-       facebook
-    </div>
-  </div>
   <div class="header">
-    <img class="header__image" alt="" />
+    <div class="social">
+      <div class="social__link">
+         <img src="src/img/Twitter_Icon.png" alt="Twitter Icon" />
+      </div>
+      <div class="social__link">
+         <img src="src/img/Instagram_Icon.png" alt="Instagram Icon" />
+      </div>
+      <div class="social__link">
+         <img src="src/img/Facebook_Icon.png" alt="Facebook Icon" />
+      </div>
+    </div>
+    <img class="header__image" src="src/img/header.png" alt="Postcard Exchange Header" />
+    <div class="nav">
+      <ul class="nav__menu">
+        <li class="nav__menu__item">How it Works</li>
+        <li class="nav__menu__item">About Us</li>
+        <li class="nav__menu__item">Gallery</li>
+        <li class="nav__menu__item">Login</li>
+        <li class="nav__menu__item">Sign-Up</li>
+      </ul>
+    </div>
   </div>
-  <div class="nav">
-    <ul class="nav__menu">
-      <li class="nav__menu__item">How it Works</li>
-      <li class="nav__menu__item">About Us</li>
-      <li class="nav__menu__item">Gallery</li>
-      <li class="nav__menu__item">Login</li>
-      <li class="nav__menu__item">Sign-Up</li>
-    </ul>
 
-  </div>
-  <div class="header">
-    <div class="header__title">
-      International Postcard Exchange
-    </div>
-  </div>
   <div class="body">
-    <h2>Router</h2>
-    <a href="./add">add</a>
-    <a href="./pair">pair</a>
-    <router-outlet></router-outlet>
+    <div class="panel">
+
+      <h2>Router</h2>
+      <a href="./add">add</a>
+      <a href="./pair">pair</a>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
   <!-- <sebm-google-map [latitude]="lat" [longitude]="lng">
@@ -40,7 +38,7 @@
 </sebm-google-map> -->
 
 
-  <div class="footer">
+  <div class="footer panel">
     footer stuff goes here
   </div>
 </div>

@@ -1,0 +1,8 @@
+.morph{
+  @include transition(all .5s ease-in-out);
+}
+.light-blue{
+  &:hover{
+    background-color: $secondary-color-light;
+  }
+}

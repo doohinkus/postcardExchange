@@ -1,6 +1,10 @@
-<h2>Add User</h2>
-<label>Address</label>
-<input type="text" #address>
-<label>Name</label>
-<input type="text" #name>
- <button (click)="submitForm(address.value, name.value)" class="btn btn-success btn-lg btn-block margin">Add</button>
+<div class="panel">
+  <div class="form">
+    <h2>Add User</h2>
+    <label class="label">Address</label>
+    <input class="input" type="text" #address>
+    <label class="label">Name</label>
+    <input class="input" type="text" #name>
+    <button class="btn morph light-blue" (click)="submitForm(address.value, name.value)">Add</button>
+  </div>
+</div>

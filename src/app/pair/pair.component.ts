@@ -29,7 +29,7 @@ export class PairComponent implements OnInit {
         }else{
           this.UserServiceService.pairUsers(keys[index], keys[0]);
         }
-        // console.log(key, index);
+        console.log(key, index);
       });
     });
     // this.UserServiceService.pairUsers(entry.$key, "test");
@@ -38,7 +38,7 @@ export class PairComponent implements OnInit {
  constructor(private UserServiceService: UserServiceService) { }
 
  ngOnInit() {
-  this.connectUsers();
+  // this.connectUsers();
  }
 
 }
