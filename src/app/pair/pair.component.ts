@@ -14,17 +14,23 @@ export class PairComponent implements OnInit {
   users: FirebaseListObservable<any[]>;
   displayUsers: string;
 
+  connectUsers(){
+    var count: number = 0;
+    this.users = this.UserServiceService.getUsers();
+    this.users.forEach((data) => {
+      count++;
+      data.forEach((entry) => {
+        this.UserServiceService.pairUsers(entry.$key, "test");
+
+
+      })
+    });
+  }
+
  constructor(private UserServiceService: UserServiceService) { }
 
  ngOnInit() {
-   var index: number = 0;
-   this.users = this.UserServiceService.getUsers();
-   this.users.forEach((data) => {
-     data.forEach((entry) => {
-       console.log(entry.$key);
-     })
-   })
-
+  this.connectUsers();
  }
 
 }

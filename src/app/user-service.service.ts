@@ -7,9 +7,14 @@ export class UserServiceService {
   users: FirebaseListObservable<any[]>;
   usersID: FirebaseListObservable<any[]>;
 
+
   constructor(private angularFire: AngularFire) {
     this.users = angularFire.database.list('users');
     // this.usersID = angularFire.database.list('users/');
+  }
+  pairUsers(userId: string, pairId: string){
+    var userEntry = this.getUserbyId(userId);
+    userEntry.update({"partners": [pairId]});
   }
 
   getUsers(){
