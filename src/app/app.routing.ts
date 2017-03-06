@@ -4,6 +4,7 @@ import { TestComponent } from './test/test.component';
 import { AddComponent } from './add/add.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PairComponent } from './pair/pair.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 const appRoutes: Routes = [
   {
@@ -19,7 +20,10 @@ const appRoutes: Routes = [
    },{
       path: 'pair',
       component: PairComponent
-    },
+    },{
+       path: 'gallery',
+       component: GalleryComponent
+     }
 
 
 ];

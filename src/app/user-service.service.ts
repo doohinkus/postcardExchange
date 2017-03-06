@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from "./user.model";
 import { AngularFire, FirebaseListObservable} from "angularfire2";
+import * as firebase from 'firebase';
 
 @Injectable()
 export class UserServiceService {
@@ -29,6 +30,25 @@ export class UserServiceService {
   editUser(id: string, name: string, address: string){
     var userEntry = this.getUserbyId(id);
     userEntry.update({name: name, address: address});
+
+  }
+  uploadImage(file){
+    var currentFile = file.files[0];
+    var storageRef = firebase.storage().ref('images/' + currentFile.name);
+    var task = storageRef.put(currentFile);
+    task.on('state_changed',
+    function progress(snapshot){
+      // var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+    }, function error(err){
+
+    }, function complete(){
+       console.log("Success!!!!!!!!")
+    }
+  );
+
+    // console.log(currentFile);
+
 
   }
 
