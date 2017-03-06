@@ -5,9 +5,11 @@ import { AngularFire, FirebaseListObservable} from "angularfire2";
 @Injectable()
 export class UserServiceService {
   users: FirebaseListObservable<any[]>;
+  usersID: FirebaseListObservable<any[]>;
 
   constructor(private angularFire: AngularFire) {
     this.users = angularFire.database.list('users');
+    // this.usersID = angularFire.database.list('users/');
   }
 
   getUsers(){

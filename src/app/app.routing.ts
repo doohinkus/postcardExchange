@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TestComponent } from './test/test.component';
 import { AddComponent } from './add/add.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { PairComponent } from './pair/pair.component';
 
 const appRoutes: Routes = [
   {
@@ -15,7 +16,10 @@ const appRoutes: Routes = [
    },{
      path: 'profile/:id',
      component: UserDetailComponent
-   }
+   },{
+      path: 'pair',
+      component: PairComponent
+    },
 
 
 ];
