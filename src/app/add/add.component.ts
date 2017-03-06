@@ -18,7 +18,7 @@ export class AddComponent implements OnInit {
   }
   submitForm(address:string, name:string){
 
-    var newUser: User = new User(address, name, [{"id":"test0"}], [[{
+    var newUser: User = new User(false, address, name, [{"id":"test0"}], [[{
       "lat": 1000,
       "lon": 90000,
       "received": false,

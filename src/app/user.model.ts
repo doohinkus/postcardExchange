@@ -3,6 +3,7 @@ import { Partner } from "./partner.model";
 
 export class User {
   constructor (
+    public participating: boolean,
     public address: string,
     public name: string,
     public partners: Array<any>,
