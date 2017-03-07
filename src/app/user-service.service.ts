@@ -23,6 +23,9 @@ export class UserServiceService {
   getUsers(){
     return this.users;
   }
+  getImages(){
+    return this.gallery;
+  }
   addUser(newUser: User){
     this.users.push(newUser);
   }
@@ -52,7 +55,6 @@ export class UserServiceService {
     }, function error(err){
 
     }, function complete(){
-      //  console.log("Success!!!!!!!!");
        storageRef.getDownloadURL().then(function (url){
          gallery.push({"url": url});
        });

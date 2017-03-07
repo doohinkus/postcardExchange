@@ -10,6 +10,7 @@ import { UserServiceService } from "../user-service.service";
   providers: [UserServiceService]
 })
 export class GalleryComponent implements OnInit {
+   images: FirebaseListObservable<any[]>;
 
   constructor(public af: AngularFire, public UserServiceService: UserServiceService) {
 
@@ -17,7 +18,9 @@ export class GalleryComponent implements OnInit {
   upload(file){
     this.UserServiceService.uploadImage(file);
   }
+
   ngOnInit() {
+      this.images = this.UserServiceService.getImages();
   }
 
 }

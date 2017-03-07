@@ -1,2 +1,7 @@
 
 <input type="file" value="Add Image" #file (change)="upload(file)">
+<div *ngFor="let image of images | async">
+<img src={{image.url}} alt="" />
+
+
+</div>
