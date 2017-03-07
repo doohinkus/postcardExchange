@@ -49,7 +49,7 @@ export class GalleryService {
            "startLat": startLat,
            "startLon": startLon,
            "endLat": endLat,
-           "endLon": endLat
+           "endLon": endLon
 
          });
        });
