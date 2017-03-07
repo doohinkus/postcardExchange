@@ -1,4 +1,45 @@
-<app-add-image></app-add-image>
+
+
 <div *ngFor="let image of images | async">
-  <img src={{image.url}} alt="" />
+  <img src={{image.url}} class="responsive" alt="" />
+  <sebm-google-map [latitude]="image.startLat" [longitude]="image.startLon">
+    <sebm-google-map-marker [latitude]="image.startLat" [longitude]="image.startLon" [markerDraggable]="false"
+      [openInfoWindow]="true">
+      <sebm-google-map-info-window>
+        <div class="infoWindow">
+          <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
+
+        </div>
+      </sebm-google-map-info-window>
+    </sebm-google-map-marker>
+    <sebm-google-map-marker [latitude]="image.endLat" [longitude]="image.endLon" [markerDraggable]="false"
+      [openInfoWindow]="true">
+      <sebm-google-map-info-window>
+        <div class="infoWindow">
+          <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
+        </div>
+      </sebm-google-map-info-window>
+    </sebm-google-map-marker>
+  </sebm-google-map>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Postcard</h4>
+      </div>
+      <div class="modal-body">
+        <app-add-image></app-add-image>
+      </div>
+    </div>
+  </div>
 </div>

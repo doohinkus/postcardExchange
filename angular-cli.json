@@ -28,6 +28,10 @@
   }
     }
   ],
+  "styles": [
+        "styles.css",
+        "../bower_components/bootstrap/dist/css/bootstrap.css"
+      ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
