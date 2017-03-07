@@ -16,7 +16,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { EditComponent } from './edit/edit.component';
 import { PairComponent } from './pair/pair.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { O2UploadToFbsComponent } from 'o2-upload-to-fbs'; 
+import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,

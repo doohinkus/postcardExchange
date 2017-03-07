@@ -1,5 +1,7 @@
 
-<input type="file" value="Add Image" #file (change)="upload(file)">
+<input type="file" value="Add Image" #file (change)="upload(file, this.zip)">
+<input type="text" [(ngModel)]="this.zip">
+<!-- <button type="button" name="button" (click)="getZip(this.zip)">click me</button> -->
 <div *ngFor="let image of images | async">
 <img src={{image.url}} alt="" />
 
