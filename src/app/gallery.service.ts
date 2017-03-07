@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable} from "angularfire2";
+import { ImageInfo } from "./image.model";
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -11,7 +12,14 @@ export class GalleryService {
   getImages(){
     return this.gallery;
   }
-  uploadImage(file, lat, lon, niceAddress){
+  uploadImage(
+    file,
+    startAddress,
+    endAddress,
+    startLat,
+    startLon,
+    endLat,
+    endLon){
     var currentFile = file.files[0];
     var newUrl: string;
     var storageRef = firebase.storage().ref('images/' + currentFile.name);
@@ -27,7 +35,23 @@ export class GalleryService {
 
     }, function complete(){
        storageRef.getDownloadURL().then(function (url){
-         gallery.push({"url": url, "lat": lat, "lon": lon, "niceAddress": niceAddress});
+         console.log("start:", startAddress,
+         "\n url:", url,
+         "\n endAddress:", endAddress,
+         "\n startLat:", startLat,
+          "\n startLon:", startLon,
+          "\n endLon:", endLon,
+          "\n endLat:", endLat);
+         gallery.push({
+           "url": url,
+           "startAddress": startAddress,
+           "endAddress": endAddress,
+           "startLat": startLat,
+           "startLon": startLon,
+           "endLat": endLat,
+           "endLon": endLat
+
+         });
        });
     });
 

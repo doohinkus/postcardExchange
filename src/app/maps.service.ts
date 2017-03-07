@@ -11,7 +11,6 @@ export class MapsService {
   }
   getLatLon(zip:number){
       return this.Http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + zip).map(res => res.json());
-
   }
 
 
