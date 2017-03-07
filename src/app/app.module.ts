@@ -17,6 +17,7 @@ import { EditComponent } from './edit/edit.component';
 import { PairComponent } from './pair/pair.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
+import { AddImageComponent } from './add-image/add-image.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -35,7 +36,8 @@ export const firebaseConfig = {
     UserDetailComponent,
     EditComponent,
     PairComponent,
-    GalleryComponent
+    GalleryComponent,
+    AddImageComponent
   ],
   imports: [
     BrowserModule,

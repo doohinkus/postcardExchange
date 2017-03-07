@@ -8,6 +8,22 @@
     align-self: center;
   }
 }
+.nav{
+  &__menu{
+    &__item, &__item{
+      a:link, a:visited{
+        color: $accent-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
+input[type="file"]{
+    border:0;
+    color: $accent-color;
+    margin-top: $padding;
+
+}
 .bg{
   background-color: white;
 
@@ -35,10 +51,7 @@
   position: fixed;
   right: $padding;
 }
-.fullspan{
-  width: 100%;
-  display: block;
-}
+
 .btn{
   background: $accent-color;
   font-family: Vollkorn-Bold;
@@ -58,4 +71,14 @@
   display: block;
   padding: 5px;
   border: 2px solid $secondary-color-light;
+}
+
+/*helpers*/
+.fullspan {
+  width: 100%;
+  display: block;
+}
+.responsive{
+  width: 100%;
+  height: auto;
 }

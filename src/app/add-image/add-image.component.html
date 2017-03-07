@@ -1,0 +1,6 @@
+<label class="label">Start Zipcode</label>
+<input class="input" type="text" [(ngModel)]="this.startZip">
+<label class="label">End Zipcode</label>
+<input type="text" class="input" [(ngModel)]="this.endZip">
+
+  <input type="file" class="upload" value="Add Image" #file (change)="upload(file, this.startZip, this.endZip)">

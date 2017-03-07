@@ -35,13 +35,13 @@ export class GalleryService {
 
     }, function complete(){
        storageRef.getDownloadURL().then(function (url){
-         console.log("start:", startAddress,
-         "\n url:", url,
-         "\n endAddress:", endAddress,
-         "\n startLat:", startLat,
-          "\n startLon:", startLon,
-          "\n endLon:", endLon,
-          "\n endLat:", endLat);
+        //  console.log("start:", startAddress,
+        //  "\n url:", url,
+        //  "\n endAddress:", endAddress,
+        //  "\n startLat:", startLat,
+        //   "\n startLon:", startLon,
+        //   "\n endLon:", endLon,
+        //   "\n endLat:", endLat);
          gallery.push({
            "url": url,
            "startAddress": startAddress,
