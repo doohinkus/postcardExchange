@@ -14,7 +14,6 @@ export class UserServiceService {
   constructor(private angularFire: AngularFire) {
     this.users = angularFire.database.list('users');
     this.gallery = angularFire.database.list('gallery');
-    // this.usersID = angularFire.database.list('users/');
   }
   pairUsers(userId: string, pairId: string){
     var userEntry = this.getUserbyId(userId);
@@ -45,12 +44,6 @@ export class UserServiceService {
     var task = storageRef.put(currentFile);
     var gallery = this.angularFire.database.list('gallery');
 
-    //   storageRef.getDownloadURL().then((url)=>{
-    //     console.log(url);
-    //
-    //   });
-    // });
-
 
     task.on('state_changed',
     function progress(snapshot){
@@ -59,16 +52,11 @@ export class UserServiceService {
     }, function error(err){
 
     }, function complete(){
-       console.log("Success!!!!!!!!");
+      //  console.log("Success!!!!!!!!");
        storageRef.getDownloadURL().then(function (url){
-         console.log(url, "fdsfadsf");
-         gallery.push(url);
-        //  this.addImage("afdsfddfdsfdsfsf");
-
+         gallery.push({"url": url});
        });
     });
-
-    // console.log(currentFile);
 
 
   }

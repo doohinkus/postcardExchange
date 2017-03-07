@@ -12,7 +12,6 @@ import { UserServiceService } from "../user-service.service";
 export class GalleryComponent implements OnInit {
 
   constructor(public af: AngularFire, public UserServiceService: UserServiceService) {
-    // var storageRef = ffirebase.storage().ref('images/' + file.name)
 
   }
   upload(file){
