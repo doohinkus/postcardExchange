@@ -6,11 +6,14 @@ import * as firebase from 'firebase';
 @Injectable()
 export class UserServiceService {
   users: FirebaseListObservable<any[]>;
+  gallery: FirebaseListObservable<any[]>;
   usersID: FirebaseListObservable<any[]>;
+
 
 
   constructor(private angularFire: AngularFire) {
     this.users = angularFire.database.list('users');
+    this.gallery = angularFire.database.list('gallery');
     // this.usersID = angularFire.database.list('users/');
   }
   pairUsers(userId: string, pairId: string){
@@ -24,6 +27,9 @@ export class UserServiceService {
   addUser(newUser: User){
     this.users.push(newUser);
   }
+  addImage(newImage: string){
+    this.gallery.push(newImage);
+  }
   getUserbyId(userId: string){
     return this.angularFire.database.object('/users/' + userId);
   }
@@ -34,18 +40,33 @@ export class UserServiceService {
   }
   uploadImage(file){
     var currentFile = file.files[0];
+    var newUrl: string;
     var storageRef = firebase.storage().ref('images/' + currentFile.name);
     var task = storageRef.put(currentFile);
+    var gallery = this.angularFire.database.list('gallery');
+
+    //   storageRef.getDownloadURL().then((url)=>{
+    //     console.log(url);
+    //
+    //   });
+    // });
+
+
     task.on('state_changed',
     function progress(snapshot){
-      // var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
     }, function error(err){
 
     }, function complete(){
-       console.log("Success!!!!!!!!")
-    }
-  );
+       console.log("Success!!!!!!!!");
+       storageRef.getDownloadURL().then(function (url){
+         console.log(url, "fdsfadsf");
+         gallery.push(url);
+        //  this.addImage("afdsfddfdsfdsfsf");
+
+       });
+    });
 
     // console.log(currentFile);
 
