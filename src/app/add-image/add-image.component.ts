@@ -5,15 +5,17 @@ import { ImageInfo } from '../image.model';
 
 import { GalleryService } from "../gallery.service";
 import { MapsService } from "../maps.service";
+import { AuthService } from "../auth.service";
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-add-image',
   templateUrl: './add-image.component.html',
   styleUrls: ['./add-image.component.scss'],
-  providers: [GalleryService, MapsService]
+  providers: [GalleryService, MapsService, AuthService]
 })
 export class AddImageComponent implements OnInit {
-  
+
   startZip:number;
   endZip:number;
   lat:number;
@@ -22,8 +24,22 @@ export class AddImageComponent implements OnInit {
   startLon:number;
   endLat:number;
   endLon:number;
+  isLoggedIn:boolean = false;
 
-  constructor(public af: AngularFire, public GalleryService: GalleryService, public MapsService: MapsService) { }
+  constructor(public af: AngularFire, public GalleryService: GalleryService, public   MapsService: MapsService, public AuthService: AuthService) {
+    this.AuthService.af.auth.subscribe((auth) =>{
+      if (auth==null){
+         //not logged in
+         this.isLoggedIn = false;
+      }else{
+        //logged in
+        this.isLoggedIn = true;
+      }
+    })
+
+
+
+  }
   upload(file, startZip, endZip){
     //get zip and formatted address add to db
     var startLat: number;
@@ -33,6 +49,26 @@ export class AddImageComponent implements OnInit {
 
     var startAddress: string;
     var endAddress: string;
+
+
+
+    var uid:string;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          // var uid:string = user.uid;
+          console.log("signin", user.uid);
+          uid = user.uid;
+
+        } else {
+          // No user is signed in.
+          console.log("No hackers!!!!");
+        }
+
+
+      });
+      // console.log(uid);
+
 
 
     this.MapsService.getLatLon(startZip).subscribe(
@@ -52,9 +88,11 @@ export class AddImageComponent implements OnInit {
       },
       error => console.log(error),
       () => {
-      //  console.log(startAddress, endAddress)
+      //  console.log(uid, "asdfsd");
+
         this.GalleryService.uploadImage(
           file,
+          uid,
           startAddress,
           endAddress,
           this.startLat,
@@ -62,9 +100,11 @@ export class AddImageComponent implements OnInit {
           this.endLat,
           this.endLon
         );
+
       }
 
     );
+
 
 
 
@@ -83,6 +123,7 @@ export class AddImageComponent implements OnInit {
 
   ngOnInit() {
       // this.images = this.GalleryService.getImages();
+
   }
 
 }

@@ -14,6 +14,7 @@ export class GalleryService {
   }
   uploadImage(
     file,
+    uid,
     startAddress,
     endAddress,
     startLat,
@@ -44,6 +45,7 @@ export class GalleryService {
         //   "\n endLat:", endLat);
          gallery.push({
            "url": url,
+           "uid": uid,
            "startAddress": startAddress,
            "endAddress": endAddress,
            "startLat": startLat,

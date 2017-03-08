@@ -1,9 +1,24 @@
 <p>
   edit works!
 </p>
-<label>name</label>
-<input [(ngModel)]="userToDisplay.name">
-<label>address</label>
-<input [(ngModel)]="userToDisplay.address">
 
-<button (click)="updateUser(userToDisplay)">Edit</button>
+
+<div class="panel" *ngIf="isLoggedIn">
+  <div class="form">
+    <h2>Update Profile</h2>
+    <label class="label">Address</label>
+    <input class="input" type="text"  [(ngModel)]="this.address">
+    <label class="label">Street</label>
+    <input class="input" type="text" [(ngModel)]="this.street">
+    <label class="label">City</label>
+    <input class="input" type="text" [(ngModel)]="this.city">
+    <label class="label">State</label>
+    <input class="input" type="text"  [(ngModel)]="this.state">
+
+    <button class="btn morph light-blue" (click)="editUser(
+    address.value,
+    street.value,
+    city.value,
+    state.value)">Update</button>
+  </div>
+</div>

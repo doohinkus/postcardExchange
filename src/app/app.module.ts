@@ -22,6 +22,7 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { ModalModule } from 'angular2-modal';
 import { AuthService } from "./auth.service";
 import { ProfileComponent } from './profile/profile.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     PairComponent,
     GalleryComponent,
     AddImageComponent,
-    ProfileComponent
+    ProfileComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

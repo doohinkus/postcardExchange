@@ -1,10 +1,20 @@
-<div class="panel">
+<div class="panel" *ngIf="isLoggedIn">
   <div class="form">
     <h2>Add User</h2>
     <label class="label">Address</label>
     <input class="input" type="text" #address>
+    <label class="label">Street</label>
+    <input class="input" type="text" #street>
+    <label class="label">City</label>
+    <input class="input" type="text" #city>
+    <label class="label">State</label>
+    <input class="input" type="text" #state>
     <label class="label">Name</label>
     <input class="input" type="text" #name>
-    <button class="btn morph light-blue" (click)="submitForm(address.value, name.value)">Add</button>
+    <button class="btn morph light-blue" (click)="submitForm(
+    address.value,
+    street.value,
+    city.value,
+    state.value)">Add</button>
   </div>
 </div>

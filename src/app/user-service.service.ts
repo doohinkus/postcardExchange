@@ -7,11 +7,13 @@ import * as firebase from 'firebase';
 export class UserServiceService {
   users: FirebaseListObservable<any[]>;
   usersID: FirebaseListObservable<any[]>;
+  dbs: FirebaseListObservable<any[]>;
 
 
 
   constructor(private angularFire: AngularFire) {
     this.users = angularFire.database.list('users');
+
 
   }
   pairUsers(userId: string, pairId: string){
@@ -23,16 +25,19 @@ export class UserServiceService {
     return this.users;
   }
 
-  addUser(newUser: User){
-    this.users.push(newUser);
+  addUser(user, uid){
+    // this.users.push(newUser);
+    //just use firebase!!!!!
+    return firebase.database().ref('users/'+uid).set(user);
+
   }
 
   getUserbyId(userId: string){
     return this.angularFire.database.object('/users/' + userId);
   }
-  editUser(id: string, name: string, address: string){
+  editUser(id, params){
     var userEntry = this.getUserbyId(id);
-    userEntry.update({name: name, address: address});
+    userEntry.update(params);
 
   }
 

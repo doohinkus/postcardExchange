@@ -5,6 +5,7 @@ import { AddComponent } from './add/add.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PairComponent } from './pair/pair.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   {
@@ -23,6 +24,9 @@ const appRoutes: Routes = [
     },{
        path: 'gallery',
        component: GalleryComponent
+     },{
+       path: 'profile',
+       component: ProfileComponent
      }
 
 

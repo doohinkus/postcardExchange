@@ -1,17 +1,12 @@
-<p>
-  user-detail works!
-</p>
+<div *ngIf="isLoggedIn">
+  {{(loggedInUser | async)?.name}}
 
-{{userToDisplay?.name}}
-{{this.userId}}
+  <h2>in detail</h2>
+  <label class="label">name</label>
+  <input class="input" [(ngModel)]="name">{{userToDisplay?.name}}
+  <label class="label">address</label>
+  <input class="input" [(ngModel)]="address">
 
+  <button (click)="editUser(this.userId, this.name, this.address)">Edit</button>
 
-<!-- <app-edit [activeUser]="userToDisplay | async"></app-edit> -->
-
-<h2>in detail</h2>
-<label>name</label>
-<input [(ngModel)]="name">{{userToDisplay?.name}}
-<label>address</label>
-<input [(ngModel)]="address">
-
-<button (click)="editUser(this.userId, this.name, this.address)">Edit</button>
+</div>
