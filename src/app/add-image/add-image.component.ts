@@ -7,6 +7,7 @@ import { GalleryService } from "../gallery.service";
 import { MapsService } from "../maps.service";
 import { AuthService } from "../auth.service";
 import * as firebase from "firebase";
+declare var $:any;
 
 @Component({
   selector: 'app-add-image',
@@ -88,7 +89,6 @@ export class AddImageComponent implements OnInit {
       },
       error => console.log(error),
       () => {
-      //  console.log(uid, "asdfsd");
 
         this.GalleryService.uploadImage(
           file,
@@ -100,7 +100,7 @@ export class AddImageComponent implements OnInit {
           this.endLat,
           this.endLon
         );
-
+        $('#myModal').modal('hide');
       }
 
     );
