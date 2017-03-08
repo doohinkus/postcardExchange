@@ -17,15 +17,17 @@
         <li class="nav__menu__item"><a href="#">How it Works</a></li>
         <li class="nav__menu__item"><a href="#">About Us</a></li>
         <li class="nav__menu__item"><a href="./gallery">Gallery</a></li>
-        <li class="nav__menu__item"><a href="#">Login</a></li>
+        <li class="nav__menu__item"><a (click)="login()">Login</a></li>
+        <li class="nav__menu__item"><a (click)="logout()">Logout</a></li>
         <li class="nav__menu__item"><a href="#">Sign-Up</a></li>
       </ul>
     </div>
   </div>
 
   <div class="body">
-    <div class="panel">
 
+    <div class="panel">
+       {{isLoggegin}}
       <h2>Router</h2>
       <a href="./add">add</a>
       <a href="./pair">pair</a>

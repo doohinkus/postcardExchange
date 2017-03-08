@@ -20,6 +20,8 @@ import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
 import { AddImageComponent } from './add-image/add-image.component';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { ModalModule } from 'angular2-modal';
+import { AuthService } from "./auth.service";
+import { ProfileComponent } from './profile/profile.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -39,7 +41,8 @@ export const firebaseConfig = {
     EditComponent,
     PairComponent,
     GalleryComponent,
-    AddImageComponent
+    AddImageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ export const firebaseConfig = {
       apiKey: 'AIzaSyAhAF8qpTLc7riUDOP6h1Ln96pOaGfZAxU'
     })
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
