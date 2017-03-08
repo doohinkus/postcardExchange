@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthService } from "./auth.service";
 import { Router } from "@angular/router";
+import { GalleryComponent } from './gallery/gallery.component';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,20 @@ import { Router } from "@angular/router";
 
 
 export class AppComponent {
-  private isLoggegin: boolean = false;
+
+  isLoggedIn:boolean = false;
+
+
   constructor (public AuthService: AuthService, private router: Router){
 
+  
      this.AuthService.af.auth.subscribe((auth) =>{
        if (auth==null){
           //not logged in
-          this.isLoggegin = false;
+          this.isLoggedIn = false;
        }else{
          //logged in
-         this.isLoggegin = true;
+         this.isLoggedIn = true;
        }
      })
   }
@@ -40,7 +45,7 @@ export class AppComponent {
   logout(){
     this.AuthService.logout();
     console.log("loggedout");
-    this.isLoggegin = false;
+    this.isLoggedIn = false;
   }
 
 
