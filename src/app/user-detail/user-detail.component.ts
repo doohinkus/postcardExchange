@@ -53,7 +53,6 @@ export class UserDetailComponent implements OnInit {
      this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
    });
    this.loggedInUserPartner = this.userServiceService.getUserbyId(this.userId);
-    // console.log(this.loggedInUserPartner, "asd")
 
 
   }

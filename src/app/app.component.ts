@@ -65,6 +65,8 @@ export class AppComponent {
     this.AuthService.logout();
     console.log("loggedout");
     this.isLoggedIn = false;
+    this.router.navigate(['']);
+
   }
 
 

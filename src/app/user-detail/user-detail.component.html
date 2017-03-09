@@ -28,16 +28,22 @@
   <div class="profile__postcard">
     <img src="src/img/postcard-sent.png" alt="postcard sent" />
     <div class="profile__postcard__images">
-      <div class="">
+      <div>
+        <p>
+
           My postcard: {{(loggedInUser | async)?.postcard}}
+        </p>
           <select (change)="updateMyPostcard($event.target.value)">
              <option value="unsent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
              <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
           </select>
       </div>
-      <div class="">
+      <div>
         <!-- <img src="src/img/postcard-unsent.png" alt="postcard unsent" /> -->
-        Partner postcard: {{(loggedInUser | async)?.partnerPostcard}}
+        <p>
+
+          Partner postcard: {{(loggedInUser | async)?.partnerPostcard}}
+        </p>
       </div>
       <select (change)="updatePartnerPostcard($event.target.value)">
          <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
@@ -45,12 +51,40 @@
       </select>
     </div>
 
-
-
   </div>
 
 
 </div>
+
+<div class="panel profile">
+  <div class="panel profile">
+    <!-- <h2>Postcard Partner</h2> -->
+    <div class="profile__image">
+      <img src="{{(loggedInUserPartner | async)?.photoURL}}" alt="" />
+    </div>
+    <div class="profile__details">
+      <h3>{{(loggedInUserPartner | async)?.name}}</h3>
+      <h4>Email:</h4>
+      <p>
+        {{(loggedInUserPartner | async)?.email}}
+      </p>
+      <h4>Address:</h4>
+      <p>
+        {{(loggedInUserPartner | async)?.address}}
+        <br>
+        {{(loggedInUserPartner | async)?.city}}, {{(loggedInUserPartner | async)?.state}}
+        <br>
+        {{(loggedInUserPartner | async)?.country}}
+        <br>
+        {{(loggedInUserPartner | async)?.zip}}
+      </p>
+      <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{(loggedInUserPartner | async)?.postcard}}</span> your postcard.</h4>
+    </div>
+  </div>
+</div>
+
+
+<!-- </div> -->
 
 </div>
 
