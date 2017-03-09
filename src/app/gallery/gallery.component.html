@@ -5,25 +5,35 @@
 </button>
 
 <div *ngFor="let image of images | async">
-  <div class="panel">
-    <div class="panel__heading">
-      {{image.uid}}
-      
+  <div class="panel gallery">
+    <div class="gallery__heading">
+      <div class="gallery__heading__image">
+        <img src={{image.profilePic}} alt="{{image.name}} profile pic" />
+      </div>
+      <div class="gallery__heading__info">
+        <h4>{{image.name}}</h4>
+        <p>
+          From {{image.startAddress}}
+        </p>
+      </div>
+
     </div>
-    <div class="panel__image">
+    <div class="gallery__image">
       <img src={{image.url}} class="responsive" alt="" />
     </div>
 
 
-      <div class="panel__details">
-          details
+      <div class="gallery__details">
+        <p>
+          This postcard was sent from {{image.startAddress}} to {{image.endAddress}}
+        </p>
       </div>
 
-      <div class="panel__actions">
-        <div class="panel__actions__buttons">
+      <div class="gallery__actions">
+        <div class="gallery__actions__buttons">
           tweet map
         </div>
-        <div class="panel__actions__map">
+        <div class="gallery__actions__map">
           <sebm-google-map [latitude]="image.startLat" [longitude]="image.startLon">
             <sebm-google-map-marker [latitude]="image.startLat" [longitude]="image.startLon" [markerDraggable]="false"
               [openInfoWindow]="true">

@@ -9,6 +9,40 @@
     align-self: center;
   }
 }
+.gallery{
+  &__heading{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // padding: $padding;
+    &__image{
+      img{
+        border-radius: 50%;
+        width: 100px;
+        margin-right:$padding;
+        align-self: flex-end;
+      }
+
+    }
+    &__info{
+      h4{
+      margin:0;
+      font-weight: 800;
+      }
+      p{
+        font-style: italic;
+      }
+    }
+  }
+
+  &__details{
+    p{
+      color: $accent-color;
+      font-weight: 800;
+    }
+  }
+
+}
 .nav{
   &__menu{
     &__item, &__item{
