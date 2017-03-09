@@ -20,6 +20,7 @@
 
     }
   }
+
   &__details{
     padding: $padding;
     h3{
@@ -287,6 +288,13 @@ input[type="file"]{
 .modal-header:after,
 .modal-footer:after {
   clear: both;
+}
+
+.edit{
+  &__body{
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 /*helpers*/

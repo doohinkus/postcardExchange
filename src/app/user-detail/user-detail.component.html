@@ -12,14 +12,16 @@
     </p>
     <h4>Address:</h4>
     <p>
-      123 FAke Street
+      {{(loggedInUser | async)?.address}}
       <br>
-      Sandy, optgroup
+      {{(loggedInUser | async)?.city}}, {{(loggedInUser | async)?.state}}
       <br>
-      97055
+      {{(loggedInUser | async)?.country}}
+      <br>
+      {{(loggedInUser | async)?.zip}}
     </p>
     <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
-      Add Postcard
+      Edit Profile
     </button>
 
   </div>
@@ -45,26 +47,32 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade edit" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Postcard</h4>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
       </div>
-      <div class="modal-body">
-        edit image component
-        <label class="label">Street</label>
-        <input class="input" #address>
-        <label class="label">City</label>
-        <input class="input" #city>
-        <label class="label">State</label>
-        <input class="input" #state>
-        <label class="label">Country</label>
-        <input class="input" #country>
-        <label class="label">Postal Code</label>
-        <input class="input" #zip>
-        <button (click)="editUser(address.value, city.value, state.value, country.value, zip.value)" class="btn">Edit</button>
+      <div class="modal-body edit__body">
+        <div class="edit__body__form">
+          <h3>Update Profile</h3>
+                <label class="label">Street</label>
+                <input class="input" #address placeholder="{{(loggedInUser | async)?.address}}" value="{{(loggedInUser | async)?.address}}">
+                <label class="label">City</label>
+                <input class="input" #city placeholder="{{(loggedInUser | async)?.city}}" value="{{(loggedInUser | async)?.city}}">
+                <label class="label">State</label>
+                <input class="input" #state placeholder="{{(loggedInUser | async)?.state}}" value="{{(loggedInUser | async)?.state}}">
+                <label class="label">Country</label>
+                <input class="input" #country placeholder="{{(loggedInUser | async)?.country}}" value="{{(loggedInUser | async)?.country}}">
+                <label class="label">Postal Code</label>
+                <input class="input" #zip placeholder="{{(loggedInUser | async)?.zip}}" value="{{(loggedInUser | async)?.zip}}">
+                <button (click)="editUser(address.value, city.value, state.value, country.value, zip.value)" class="btn">Update</button>
+        </div>
+        <div class="edit__body__image">
+            <img src="./src/img/mailbox.png" alt="" />
+        </div>
+
 
       </div>
     </div>

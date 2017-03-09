@@ -28,7 +28,7 @@ export class UserServiceService {
   addUser(user, uid){
     // this.users.push(newUser);
     //just use firebase!!!!!
-    return firebase.database().ref('users/'+uid).set(user);
+    return firebase.database().ref('users/'+uid).update(user);
 
   }
 

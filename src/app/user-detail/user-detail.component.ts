@@ -5,7 +5,7 @@ import { User } from "../user.model";
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { UserServiceService } from "../user-service.service";
 import { AuthService } from "../auth.service";
-
+declare var $:any;
 
 @Component({
   selector: 'app-user-detail',
@@ -57,7 +57,9 @@ export class UserDetailComponent implements OnInit {
       "country": country,
       "zip": zip
     }
+  
     this.userServiceService.editUser(this.userId, params);
+    $("#myModal").modal('hide');
 
   }
 
