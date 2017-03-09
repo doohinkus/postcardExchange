@@ -65,9 +65,23 @@ export class UserDetailComponent implements OnInit {
       "country": country,
       "zip": zip
     }
-
     this.userServiceService.editUser(this.userId, params);
     $("#myModal").modal('hide');
+
+  }
+
+  updateMyPostcard(option){
+    var params = {
+      "postcard": option
+    }
+    this.userServiceService.editUser(this.userId, params);
+
+  }
+  updatePartnerPostcard(option){
+    var params = {
+      "partnerPostcard": option
+    }
+    this.userServiceService.editUser(this.userId, params);
 
   }
 

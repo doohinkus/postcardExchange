@@ -31,9 +31,15 @@
       <img src="src/img/postcard-unsent.png" alt="postcard unsent" />
     </div>
     <div class="dropdown">
-      <select (change)="updatePostcard($event.target.value)">
+      My postcard: {{(loggedInUser | async)?.postcard}}
+      Partner postcard: {{(loggedInUser | async)?.partnerPostcard}}
+      <select (change)="updateMyPostcard($event.target.value)">
+         <option value="unsent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
          <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
-         <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
+      </select>
+      <select (change)="updatePartnerPostcard($event.target.value)">
+         <option value="unsent">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
+         <option value="sent">I did NOT receive my card from {{(loggedInUserPartner | async)?.name}} yet</option>
       </select>
     </div>
 
