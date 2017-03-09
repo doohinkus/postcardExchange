@@ -5,26 +5,51 @@
 </button>
 
 <div *ngFor="let image of images | async">
-  <img src={{image.url}} class="responsive" alt="" />
-  <sebm-google-map [latitude]="image.startLat" [longitude]="image.startLon">
-    <sebm-google-map-marker [latitude]="image.startLat" [longitude]="image.startLon" [markerDraggable]="false"
-      [openInfoWindow]="true">
-      <sebm-google-map-info-window>
-        <div class="infoWindow">
-          <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
+  <div class="panel">
+    <div class="panel__heading">
+      {{image.uid}}
+      
+    </div>
+    <div class="panel__image">
+      <img src={{image.url}} class="responsive" alt="" />
+    </div>
+
+
+      <div class="panel__details">
+          details
+      </div>
+
+      <div class="panel__actions">
+        <div class="panel__actions__buttons">
+          tweet map
+        </div>
+        <div class="panel__actions__map">
+          <sebm-google-map [latitude]="image.startLat" [longitude]="image.startLon">
+            <sebm-google-map-marker [latitude]="image.startLat" [longitude]="image.startLon" [markerDraggable]="false"
+              [openInfoWindow]="true">
+              <sebm-google-map-info-window>
+                <div class="infoWindow">
+                  <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
+                </div>
+              </sebm-google-map-info-window>
+            </sebm-google-map-marker>
+            <sebm-google-map-marker [latitude]="image.endLat" [longitude]="image.endLon" [markerDraggable]="false"
+              [openInfoWindow]="true">
+              <sebm-google-map-info-window>
+                <div class="infoWindow">
+                  <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
+                </div>
+              </sebm-google-map-info-window>
+            </sebm-google-map-marker>
+          </sebm-google-map>
 
         </div>
-      </sebm-google-map-info-window>
-    </sebm-google-map-marker>
-    <sebm-google-map-marker [latitude]="image.endLat" [longitude]="image.endLon" [markerDraggable]="false"
-      [openInfoWindow]="true">
-      <sebm-google-map-info-window>
-        <div class="infoWindow">
-          <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
-        </div>
-      </sebm-google-map-info-window>
-    </sebm-google-map-marker>
-  </sebm-google-map>
+
+      </div>
+
+
+  </div>
+
 </div>
 
 

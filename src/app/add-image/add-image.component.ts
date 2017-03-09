@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
 import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
 import { ImageInfo } from '../image.model';
+import { UserServiceService } from '../user-service.service';
 
 import { GalleryService } from "../gallery.service";
 import { MapsService } from "../maps.service";
 import { AuthService } from "../auth.service";
+
 import * as firebase from "firebase";
 declare var $:any;
 
@@ -13,7 +15,7 @@ declare var $:any;
   selector: 'app-add-image',
   templateUrl: './add-image.component.html',
   styleUrls: ['./add-image.component.scss'],
-  providers: [GalleryService, MapsService, AuthService]
+  providers: [GalleryService, MapsService, AuthService, UserServiceService]
 })
 export class AddImageComponent implements OnInit {
 
@@ -26,17 +28,20 @@ export class AddImageComponent implements OnInit {
   endLat:number;
   endLon:number;
   isLoggedIn:boolean = false;
+  user: FirebaseListObservable<any[]>;
 
-  constructor(public af: AngularFire, public GalleryService: GalleryService, public   MapsService: MapsService, public AuthService: AuthService) {
+  constructor(public af: AngularFire, public GalleryService: GalleryService, public   MapsService: MapsService, public AuthService: AuthService, public UserServiceService: UserServiceService) {
     this.AuthService.af.auth.subscribe((auth) =>{
       if (auth==null){
          //not logged in
+         console.log(auth , "asdfds");
          this.isLoggedIn = false;
       }else{
         //logged in
         this.isLoggedIn = true;
       }
     })
+
 
 
 
@@ -51,15 +56,19 @@ export class AddImageComponent implements OnInit {
     var startAddress: string;
     var endAddress: string;
 
-
-
     var uid:string;
+    var name:string;
+    var profilePic:string;
+
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
           // var uid:string = user.uid;
           console.log("signin", user.uid);
           uid = user.uid;
+
+          // userName = ;
+          // userPic = ;
 
         } else {
           // No user is signed in.
@@ -89,17 +98,30 @@ export class AddImageComponent implements OnInit {
       },
       error => console.log(error),
       () => {
-
-        this.GalleryService.uploadImage(
-          file,
-          uid,
-          startAddress,
-          endAddress,
-          this.startLat,
-          this.startLon,
-          this.endLat,
-          this.endLon
-        );
+       var thisPerson = this.UserServiceService.getUserbyId(uid).subscribe((data) =>{
+         console.log(data.name);
+         this.GalleryService.uploadImage(
+           file,
+           data.name,
+           data.photoURL,
+           startAddress,
+           endAddress,
+           this.startLat,
+           this.startLon,
+           this.endLat,
+           this.endLon
+         );
+       })
+        // this.GalleryService.uploadImage(
+        //   file,
+        //   uid,
+        //   startAddress,
+        //   endAddress,
+        //   this.startLat,
+        //   this.startLon,
+        //   this.endLat,
+        //   this.endLon
+        // );
         $('#myModal').modal('hide');
       }
 

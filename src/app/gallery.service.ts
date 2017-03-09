@@ -12,9 +12,11 @@ export class GalleryService {
   getImages(){
     return this.gallery;
   }
+
   uploadImage(
     file,
-    uid,
+    name,
+    profilePic,
     startAddress,
     endAddress,
     startLat,
@@ -45,7 +47,8 @@ export class GalleryService {
         //   "\n endLat:", endLat);
          gallery.push({
            "url": url,
-           "uid": uid,
+           "name": name,
+           "profilePic": profilePic,
            "startAddress": startAddress,
            "endAddress": endAddress,
            "startLat": startLat,
