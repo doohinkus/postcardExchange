@@ -1,12 +1,51 @@
 <div *ngIf="isLoggedIn">
-  {{(loggedInUser | async)?.name}}
 
-  <h2>in detail</h2>
-  <label class="label">name</label>
-  <input class="input" [(ngModel)]="name">{{userToDisplay?.name}}
-  <label class="label">address</label>
-  <input class="input" [(ngModel)]="address">
+<div class="panel profile">
+  <div class="profile__image">
+    <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
+  </div>
+  <div class="profile__details">
+    <h3>{{(loggedInUser | async)?.name}}</h3>
+    <h4>Email:</h4>
+    <p>
+      {{(loggedInUser | async)?.email}}
+    </p>
+    <h4>Address:</h4>
+    <p>
+      123 FAke Street
+      <br>
+      Sandy, optgroup
+      <br>
+      97055
+    </p>
+    <!-- <label class="label">Street</label>
+    <input class="input" [(ngModel)]="address" placeholder="">
+    <label class="label">City</label>
+    <input class="input" [(ngModel)]="city">
+    <label class="label">State</label>
+    <input class="input" [(ngModel)]="state">
+    <label class="label">Country</label>
+    <input class="input" [(ngModel)]="country">
+    <label class="label">Postal Code</label>
+    <input class="input" [(ngModel)]="zip">
+    <button (click)="editUser(this.userId, this.name, this.address)" class="btn">Edit</button> -->
+  </div>
+  <div class="profile__postcard">
+    <div class="profile__postcard__images">
+      <img src="src/img/postcard-sent.png" alt="postcard sent" />
+      <img src="src/img/postcard-unsent.png" alt="postcard unsent" />
+    </div>
+    <div class="dropdown">
+      <select type="button" name="name" value="">
+         <option>I sent my card to ...</option>
+         <option>I received my card from ...</option>
+      </select>
+    </div>
 
-  <button (click)="editUser(this.userId, this.name, this.address)">Edit</button>
+
+  </div>
+
+
+</div>
 
 </div>

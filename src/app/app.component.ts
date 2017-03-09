@@ -36,7 +36,8 @@ export class AppComponent {
     this.AuthService.loginWithGoogle().then((data) =>{
       var info = {
          "name": data.auth.displayName,
-         "photoURL": data.auth.photoURL
+         "photoURL": data.auth.photoURL,
+         "email": data.auth.email
       }
       this.UserServiceService.addUser(info, data.auth.uid);
 //write data

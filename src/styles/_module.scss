@@ -9,6 +9,38 @@
     align-self: center;
   }
 }
+.profile{
+  display: flex;
+  justify-content: space-between;
+  &__image{
+    padding: $padding;
+    img{
+      border-radius: 50%;
+      width:200px;
+
+    }
+  }
+  &__details{
+    padding: $padding;
+    h3{
+      margin:0;
+      color: $accent-color;
+      font-weight: bolder;
+      // padding: $padding;
+    }
+    h4{
+      margin:0;
+      color: $secondary-color;
+    }
+    p{
+
+    }
+
+  }
+  &__postcard{
+   padding: $padding;
+  }
+}
 .gallery{
   &__heading{
     display: flex;

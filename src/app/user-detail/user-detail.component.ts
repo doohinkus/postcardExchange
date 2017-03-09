@@ -50,6 +50,10 @@ export class UserDetailComponent implements OnInit {
 
   }
   editUser(){
+    var params = {
+      
+    }
+    this.userServiceService.editUser(this.userId, params);
 
   }
 
