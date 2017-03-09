@@ -27,7 +27,7 @@ export class PairComponent implements OnInit {
         if (index < keys.length-1){
           this.UserServiceService.pairUsers(keys[index], keys[index+1]);
         }else{
-          this.UserServiceService.pairUsers(keys[index], keys[0]);
+          this.UserServiceService.pairUsers(keys[index], keys[index-index]);
         }
         console.log(key, index);
       });
