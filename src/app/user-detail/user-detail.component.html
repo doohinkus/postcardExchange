@@ -18,17 +18,10 @@
       <br>
       97055
     </p>
-    <!-- <label class="label">Street</label>
-    <input class="input" [(ngModel)]="address" placeholder="">
-    <label class="label">City</label>
-    <input class="input" [(ngModel)]="city">
-    <label class="label">State</label>
-    <input class="input" [(ngModel)]="state">
-    <label class="label">Country</label>
-    <input class="input" [(ngModel)]="country">
-    <label class="label">Postal Code</label>
-    <input class="input" [(ngModel)]="zip">
-    <button (click)="editUser(this.userId, this.name, this.address)" class="btn">Edit</button> -->
+    <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
+      Add Postcard
+    </button>
+
   </div>
   <div class="profile__postcard">
     <div class="profile__postcard__images">
@@ -48,4 +41,32 @@
 
 </div>
 
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Postcard</h4>
+      </div>
+      <div class="modal-body">
+        edit image component
+        <!-- <label class="label">Street</label>
+        <input class="input" [(ngModel)]="address" placeholder="">
+        <label class="label">City</label>
+        <input class="input" [(ngModel)]="city">
+        <label class="label">State</label>
+        <input class="input" [(ngModel)]="state">
+        <label class="label">Country</label>
+        <input class="input" [(ngModel)]="country">
+        <label class="label">Postal Code</label>
+        <input class="input" [(ngModel)]="zip">
+        <button (click)="editUser(this.userId, this.name, this.address)" class="btn">Edit</button> -->
+
+      </div>
+    </div>
+  </div>
 </div>
