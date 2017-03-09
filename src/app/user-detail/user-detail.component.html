@@ -32,8 +32,8 @@
     </div>
     <div class="dropdown">
       <select (change)="updatePostcard($event.target.value)">
-         <option value="sent">I sent my card to {{(loggedInUser | async)?.partner}}</option>
-         <option value="received">I received my card from {{(loggedInUser | async)?.partner}}</option>
+         <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
+         <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
       </select>
     </div>
 

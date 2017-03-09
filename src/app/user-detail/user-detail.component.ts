@@ -18,6 +18,7 @@ export class UserDetailComponent implements OnInit {
   name:string = null;
   address:string =null;
   loggedInUser;
+  loggedInUserPartner;
   isLoggedIn:boolean = false;
 
   userToDisplay;
@@ -46,6 +47,13 @@ export class UserDetailComponent implements OnInit {
       console.log(this.userId);
     });
    this.loggedInUser = this.userServiceService.getUserbyId(this.userId);
+   this.loggedInUser.subscribe((data)=>{
+
+     console.log(data.partners ," sadfsd");
+     this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
+   });
+   this.loggedInUserPartner = this.userServiceService.getUserbyId(this.userId);
+    // console.log(this.loggedInUserPartner, "asd")
 
 
   }
@@ -57,7 +65,7 @@ export class UserDetailComponent implements OnInit {
       "country": country,
       "zip": zip
     }
-  
+
     this.userServiceService.editUser(this.userId, params);
     $("#myModal").modal('hide');
 
