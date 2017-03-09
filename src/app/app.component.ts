@@ -3,22 +3,26 @@ import { AuthService } from "./auth.service";
 import { UserServiceService } from "./user-service.service";
 import { Router } from "@angular/router";
 import { GalleryComponent } from './gallery/gallery.component';
+import { AngularFire, FirebaseListObservable} from "angularfire2";
+import * as firebase from 'firebase';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [UserServiceService, AuthService]
+  providers: [UserServiceService, AuthService, AngularFire]
 })
 
 
 export class AppComponent {
 
   isLoggedIn:boolean = false;
+  userID;
 
 
   constructor (public AuthService: AuthService, private router: Router,
-    public UserServiceService: UserServiceService){
+    public UserServiceService: UserServiceService, private af: AngularFire){
 
 
      this.AuthService.af.auth.subscribe((auth) =>{
@@ -44,17 +48,19 @@ export class AppComponent {
       console.log(data.auth);
       //uid
       console.log(data.auth.uid);
+      this.userID = data.auth.uid;
       //photoURL
       console.log(data.auth.photoURL);
       //email
       console.log(data.auth.email);
       //displayName
       console.log(data.auth.displayName);
-
+   this.userID = data.auth.uid;
       this.router.navigate(['profile', data.auth.uid]);
 
     })
   }
+
   logout(){
     this.AuthService.logout();
     console.log("loggedout");

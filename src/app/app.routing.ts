@@ -6,11 +6,13 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PairComponent } from './pair/pair.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { SplashComponent } from './splash/splash.component';
 
 const appRoutes: Routes = [
   {
      path: '',
-     component: TestComponent
+     component: SplashComponent
    },
    {
      path: 'add',
@@ -27,6 +29,9 @@ const appRoutes: Routes = [
      },{
        path: 'profile',
        component: ProfileComponent
+     },{
+       path: 'about',
+       component: AboutusComponent
      }
 
 

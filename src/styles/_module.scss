@@ -9,6 +9,17 @@
     align-self: center;
   }
 }
+.works{
+  &__panel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div{
+      padding: $padding;
+    }
+
+  }
+}
 .profile{
   display: flex;
   justify-content: space-between;

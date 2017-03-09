@@ -23,6 +23,8 @@ import { ModalModule } from 'angular2-modal';
 import { AuthService } from "./auth.service";
 import { ProfileComponent } from './profile/profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { SplashComponent } from './splash/splash.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -44,7 +46,9 @@ export const firebaseConfig = {
     GalleryComponent,
     AddImageComponent,
     ProfileComponent,
-    SignUpComponent
+    SignUpComponent,
+    AboutusComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
