@@ -214,10 +214,17 @@ input[type="file"]{
 }
 .modal-header {
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  background-color: $accent-color;
+  color: white;
+  font-weight: bolder;
+  font-size: 1em;
+  // border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .close {
-  margin-top: -2px;
+  // margin-top: -2px;
+  position:absolute;
+  right: 10px;
+
 }
 .modal-title {
   margin: 0;

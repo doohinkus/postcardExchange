@@ -54,17 +54,17 @@
       </div>
       <div class="modal-body">
         edit image component
-        <!-- <label class="label">Street</label>
-        <input class="input" [(ngModel)]="address" placeholder="">
+        <label class="label">Street</label>
+        <input class="input" #address>
         <label class="label">City</label>
-        <input class="input" [(ngModel)]="city">
+        <input class="input" #city>
         <label class="label">State</label>
-        <input class="input" [(ngModel)]="state">
+        <input class="input" #state>
         <label class="label">Country</label>
-        <input class="input" [(ngModel)]="country">
+        <input class="input" #country>
         <label class="label">Postal Code</label>
-        <input class="input" [(ngModel)]="zip">
-        <button (click)="editUser(this.userId, this.name, this.address)" class="btn">Edit</button> -->
+        <input class="input" #zip>
+        <button (click)="editUser(address.value, city.value, state.value, country.value, zip.value)" class="btn">Edit</button>
 
       </div>
     </div>

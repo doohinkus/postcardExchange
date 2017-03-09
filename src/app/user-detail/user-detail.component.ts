@@ -49,9 +49,13 @@ export class UserDetailComponent implements OnInit {
 
 
   }
-  editUser(){
+  editUser(address, city, state, country, zip){
     var params = {
-      
+      "address": address,
+      "city": city,
+      "state": state,
+      "country": country,
+      "zip": zip
     }
     this.userServiceService.editUser(this.userId, params);
 
