@@ -6,3 +6,17 @@
     background-color: $secondary-color-light;
   }
 }
+.social{
+  &__link{
+    img{
+
+      transition: all .3s ease-in-out;
+    }
+  }
+  &__link{
+    img:hover{
+
+      width: 110%;
+    }
+  }
+}

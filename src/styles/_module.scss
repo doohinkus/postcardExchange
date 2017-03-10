@@ -20,6 +20,7 @@
 
   }
 }
+
 .profile{
   display: flex;
   justify-content: space-between;
@@ -59,6 +60,10 @@
     justify-content: flex-start;
     align-items: center;
     // padding: $padding;
+    &__actions__map{
+      display:none;
+      border:2px solid black;
+    }
     &__image{
       img{
         border-radius: 50%;
@@ -119,8 +124,19 @@ input[type="file"]{
     justify-content: center;
     &__item{
       font-family: Vollkorn-Bold;
-      color: $base-color;
+      color: $accent-color;
       padding: $padding;
+      cursor: pointer;
+      transition: color .5s ease-in-out;
+      a{
+        transition: color .5s ease-in-out;
+      }
+      a:hover{
+          color: $secondary-color;
+      }
+    }
+    &__item:hover{
+      color: $secondary-color;
     }
 
   }
@@ -140,6 +156,10 @@ input[type="file"]{
   margin-bottom: $padding;
   padding-left: $padding;
   padding-right: $padding;
+  transition: background .5s ease-in-out;
+  &:hover{
+      background: $secondary-color;
+  }
 }
 .label{
   // font-family: Vollkorn-Bold;
