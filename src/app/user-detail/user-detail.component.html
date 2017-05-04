@@ -26,7 +26,8 @@
 
   </div>
   <div class="profile__postcard">
-    <img src="src/img/postcard-sent.png" alt="postcard sent" />
+    <img [src]="isSent ? 'src/img/postcard-sent.png' : 'src/img/postcard-unsent.png'" alt="postcard sent" />
+
     <div class="profile__postcard__images">
       <div>
         <p>

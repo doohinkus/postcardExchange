@@ -20,6 +20,7 @@ export class UserDetailComponent implements OnInit {
   loggedInUser;
   loggedInUserPartner;
   isLoggedIn:boolean = false;
+  isSent:boolean = false;
 
   userToDisplay;
   constructor(
@@ -74,6 +75,11 @@ export class UserDetailComponent implements OnInit {
       "postcard": option
     }
     this.userServiceService.editUser(this.userId, params);
+    if (option==="sent"){
+      this.isSent=true;
+    }else{
+      this.isSent=false;
+    }
 
   }
   updatePartnerPostcard(option){
