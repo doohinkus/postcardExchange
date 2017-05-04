@@ -14,6 +14,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: $break-small) {
+      display: block;
+    }
     div{
       padding: $padding;
     }
@@ -24,6 +27,10 @@
 .profile{
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: $break-small) {
+    display: block;
+  }
+
   &__image{
     padding: $padding;
     img{
@@ -52,6 +59,7 @@
   }
   &__postcard{
    padding: $padding;
+
   }
 }
 .gallery{
