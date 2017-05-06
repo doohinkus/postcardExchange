@@ -7,6 +7,9 @@
   @extend .bg;
   img{
     align-self: center;
+    max-width: 100%;
+   height: auto;
+
   }
 }
 .works{
@@ -14,13 +17,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @media screen and (max-width: $break-small) {
+    @media screen and (max-width: 900px) {
       display: block;
+      img{
+        display: block;
+        margin: auto;
+      }
     }
     div{
       padding: $padding;
     }
 
+  }
+}
+.works__panel:nth-child(3){
+  // background-color: blue;
+  img{
+    order:2;
   }
 }
 
@@ -36,6 +49,9 @@
     img{
       border-radius: 50%;
       width:200px;
+      @media screen and (max-width: $break-small) {
+        width: 75px;
+      }
 
     }
   }
@@ -100,16 +116,7 @@
   }
 
 }
-.nav{
-  &__menu{
-    &__item, &__item{
-      a:link, a:visited{
-        color: $accent-color;
-        text-decoration: none;
-      }
-    }
-  }
-}
+
 input[type="file"]{
     border:0;
     color: $accent-color;
@@ -130,21 +137,51 @@ input[type="file"]{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    @media screen and (max-width: $break-small) {
+      display: block;
+
+      // margin-top: 1em;
+    }
     &__item{
+      @media screen and (max-width: $break-small) {
+        background-color: lighten($base-color,60%);
+        margin-top: .25em;
+        // border: 2px solid green;
+        text-align: center;
+      }
       font-family: Vollkorn-Bold;
       color: $accent-color;
       padding: $padding;
       cursor: pointer;
-      transition: color .5s ease-in-out;
+      transition: all .5s ease-in-out;
       a{
         transition: color .5s ease-in-out;
       }
       a:hover{
           color: $secondary-color;
+          @media screen and (max-width: $break-small) {
+          color: #fff;
+          }
+      }
+      a:link, a:visited{
+           color: $accent-color;
+           text-decoration: none;
       }
     }
     &__item:hover{
       color: $secondary-color;
+      @media screen and (max-width: $break-small) {
+        background-color: $accent-color;
+      }
+      & a{
+        color: $secondary-color;
+      }
+      & a{
+        @media screen and (max-width: $break-small) {
+          color: #fff;
+        }
+      }
+
     }
 
   }
@@ -152,13 +189,25 @@ input[type="file"]{
 .social{
   position: fixed;
   right: $padding;
+  @media screen and (max-width: $break-small) {
+    display: none;
+  }
+  & img{
+    transition: transform .2s ease-in-out;
+    cursor: pointer;
+  }
+  & img:hover{
+    transform: scale(1.2);
+  }
 }
 
 .btn{
   background: $accent-color;
   font-family: Vollkorn-Bold;
+  font-size: 1.3em;
   color: #FFFFFF;
-  padding: 5px;
+  width: 60%;
+  padding: $padding;
   border: none;
   margin-top: $padding;
   margin-bottom: $padding;
@@ -264,6 +313,13 @@ input[type="file"]{
   // margin-top: -2px;
   position:absolute;
   right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  & span{
+    font-size: 2em;
+    color: #fff;
+  }
 
 }
 .modal-title {
