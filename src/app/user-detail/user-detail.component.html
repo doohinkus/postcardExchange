@@ -79,7 +79,7 @@
         <br>
         {{(loggedInUserPartner | async)?.zip}}
       </p>
-      <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{(loggedInUserPartner | async)?.postcard}}</span> your postcard.</h4>
+      <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{partnerPostcardMessage}}</span> your postcard.</h4>
     </div>
   </div>
 </div>

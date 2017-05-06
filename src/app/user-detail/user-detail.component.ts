@@ -21,6 +21,7 @@ export class UserDetailComponent implements OnInit {
   loggedInUserPartner;
   isLoggedIn:boolean = false;
   isSent:boolean = false;
+  partnerPostcardMessage: string = "not sent";
 
   userToDisplay;
   constructor(
@@ -87,6 +88,11 @@ export class UserDetailComponent implements OnInit {
       "partnerPostcard": option
     }
     this.userServiceService.editUser(this.userId, params);
+    if (option==="sent"){
+      this.partnerPostcardMessage= "sent";
+    }else{
+      this.partnerPostcardMessage= "not sent";
+    }
 
   }
 
