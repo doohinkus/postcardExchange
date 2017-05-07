@@ -29,34 +29,7 @@
         </p>
       </div>
 
-      <div class="gallery__actions">
-        <div class="gallery__actions__buttons">
-          <a target="_blank" href="https://twitter.com/intent/tweet?text=Check%20out%20postcard%20from%20{{image.startAddress}}"><img src="/src/img/twitter.png" alt="" /></a>
-          <a (click)="showMap()"><img src="/src/img/map-marker.png" alt="" /></a>
-        </div>
-        <div class="gallery__actions__map" [@visibilityChanged]="visibility">
-          <sebm-google-map [latitude]="image.startLat" [longitude]="image.startLon">
-            <sebm-google-map-marker [latitude]="image.startLat" [longitude]="image.startLon" [markerDraggable]="false"
-              [openInfoWindow]="true">
-              <sebm-google-map-info-window>
-                <div class="infoWindow">
-                  <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
-                </div>
-              </sebm-google-map-info-window>
-            </sebm-google-map-marker>
-            <sebm-google-map-marker [latitude]="image.endLat" [longitude]="image.endLon" [markerDraggable]="false"
-              [openInfoWindow]="true">
-              <sebm-google-map-info-window>
-                <div class="infoWindow">
-                  <h5 class="iWindowTitle">From {{image.startAddress}} to {{image.endAddress}}</h5>
-                </div>
-              </sebm-google-map-info-window>
-            </sebm-google-map-marker>
-          </sebm-google-map>
-
-        </div>
-
-      </div>
+    <app-map [image]='image'></app-map>
 
 
   </div>

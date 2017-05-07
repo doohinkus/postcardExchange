@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, trigger, state, animate, transition, style } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
 import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
+import { MapComponent } from '../map/map.component';
 import { ImageInfo } from '../image.model';
 import { GalleryService } from "../gallery.service";
 import { MapsService } from "../maps.service";
@@ -13,16 +14,10 @@ declare var $:any;
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
-
+  // components: [MapComponent],
   providers: [GalleryService, MapsService, AuthService],
   inputs: ['logStatus'],
-  animations: [
-    trigger('visibilityChanged', [
-      state('shown' , style({ opacity: 1 })),
-      state('hidden', style({ opacity: 0 })),
-      transition('* => *', animate('.5s'))
-    ])
-  ]
+
 
 })
 export class GalleryComponent implements OnInit {
@@ -33,11 +28,12 @@ export class GalleryComponent implements OnInit {
  lng: number = 7.809007;
 images: FirebaseListObservable<any[]>;
 isLoggedIn:boolean = false;
-toggleVal;
+
 
 showMap(){
-  $(".gallery__actions__map").slideToggle();
+  // $(".gallery__actions__map").slideToggle();
 }
+
 
 
   constructor(public af: AngularFire, public GalleryService: GalleryService, public MapsService: MapsService, public AuthService: AuthService) {
@@ -50,6 +46,7 @@ showMap(){
         this.isLoggedIn = true;
       }
     })
+    // this.images = this.GalleryService.getImages();
  }
 
 

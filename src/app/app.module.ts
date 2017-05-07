@@ -25,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { SplashComponent } from './splash/splash.component';
+import { MapComponent } from './map/map.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -48,7 +49,8 @@ export const firebaseConfig = {
     ProfileComponent,
     SignUpComponent,
     AboutusComponent,
-    SplashComponent
+    SplashComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

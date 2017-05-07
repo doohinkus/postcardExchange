@@ -3,6 +3,7 @@ import { AuthService } from "./auth.service";
 import { UserServiceService } from "./user-service.service";
 import { Router } from "@angular/router";
 import { GalleryComponent } from './gallery/gallery.component';
+import { MapComponent } from './map/map.component';
 import { AngularFire, FirebaseListObservable} from "angularfire2";
 import * as firebase from 'firebase';
 
