@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { AuthService } from "./auth.service";
 import { UserServiceService } from "./user-service.service";
 import { Router } from "@angular/router";
@@ -16,10 +16,10 @@ import * as firebase from 'firebase';
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   isLoggedIn:boolean = false;
-  userID;
+  userID:string= "";
 
 
   constructor (public AuthService: AuthService, private router: Router,
@@ -56,10 +56,11 @@ export class AppComponent {
       console.log(data.auth.email);
       //displayName
       console.log(data.auth.displayName);
-   this.userID = data.auth.uid;
+      this.userID = data.auth.uid;
       this.router.navigate(['profile', data.auth.uid]);
+      this.isLoggedIn = true;
+    });
 
-    })
   }
 
   logout(){
@@ -69,6 +70,17 @@ export class AppComponent {
     this.router.navigate(['']);
 
   }
+  profile (){
+    firebase.auth().onAuthStateChanged((user) =>{
+      if (user) {
+      this.router.navigate(['profile', user.uid]);
+      }
+    });
 
+  }
+
+  ngOnInit() {
+
+  }
 
 }

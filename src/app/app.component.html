@@ -17,28 +17,21 @@
         <li class="nav__menu__item"><a href="#">How it Works</a></li>
         <li class="nav__menu__item"><a href="./about">About Us</a></li>
         <li class="nav__menu__item"><a href="./gallery">Gallery</a></li>
-        <li class="nav__menu__item"><a (click)="login()">Login</a></li>
-        <li class="nav__menu__item"><a (click)="logout()">Logout</a></li>
-        <!-- <li class="nav__menu__item"><a href="/profile/{{this.userID}}">Profile</a></li> -->
+        <li *ngIf="!isLoggedIn" class="nav__menu__item"><a (click)="login()">Login</a></li>
+        <li *ngIf="isLoggedIn" class="nav__menu__item"><a (click)="logout()">Logout</a></li>
+        <li *ngIf="isLoggedIn" class="nav__menu__item"><a (click)="profile()">Profile</a></li>
       </ul>
     </div>
   </div>
 
   <div class="body">
-    <!-- <h2>Router</h2> -->
     <router-outlet></router-outlet>
+  </div>
 
 
-<!-- <MapComponent></MapComponent> -->
 
-</div>
-  <!-- <sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-</sebm-google-map> -->
-
-
-  <div class="footer panel">
+  <!-- <div class="footer panel">
     <a href="./pair">pair</a>
     footer stuff goes here
-  </div>
+  </div> -->
 </div>
