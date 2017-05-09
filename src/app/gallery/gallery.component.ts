@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, trigger, state, animate, transition, style } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
-import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
+// import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
 import { MapComponent } from '../map/map.component';
 import { ImageInfo } from '../image.model';
 import { GalleryService } from "../gallery.service";

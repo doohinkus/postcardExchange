@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseApp } from 'angularfire2';
-import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
+// import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
 import { ImageInfo } from '../image.model';
 import { UserServiceService } from '../user-service.service';
 
