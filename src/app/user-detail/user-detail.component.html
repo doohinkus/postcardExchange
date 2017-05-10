@@ -26,7 +26,7 @@
 
   </div>
   <div class="profile__postcard">
-    <img [src]="isSent ? 'src/img/postcard-sent.png' : 'src/img/postcard-unsent.png'" alt="postcard sent" />
+    <img [src]="isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard sent" />
 
     <div class="profile__postcard__images">
       <div>
@@ -40,7 +40,7 @@
           </select>
       </div>
       <div>
-        <!-- <img src="src/img/postcard-unsent.png" alt="postcard unsent" /> -->
+        <!-- <img src="assets/img/postcard-unsent.png" alt="postcard unsent" /> -->
         <p>
 
           Partner postcard: {{(loggedInUser | async)?.partnerPostcard}}
