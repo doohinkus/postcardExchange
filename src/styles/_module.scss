@@ -133,7 +133,7 @@ input[type="file"]{
 .panel{
   @extend .bg;
   margin-top: $padding;
-  padding: $padding;
+  padding: $padding*2;
 }
 .nav{
   &__menu{
