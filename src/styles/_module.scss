@@ -45,6 +45,8 @@
   justify-content: space-between;
   @media screen and (max-width: $break-small) {
     display: block;
+    margin: auto;
+    text-align: center;
   }
 
   &__image{

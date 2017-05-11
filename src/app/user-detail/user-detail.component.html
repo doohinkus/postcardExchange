@@ -26,14 +26,15 @@
 
   </div>
   <div class="profile__postcard">
-    <img [src]="isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard sent" />
+
 
     <div class="profile__postcard__images">
       <div>
         <p>
-
-          My postcard: {{(loggedInUser | async)?.postcard}}
+          <!-- My postcard: {{(loggedInUser | async)?.postcard}} -->
+          My Postcard Status (Did you send your postcard?):
         </p>
+        <img [src]="isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" />
           <select (change)="updateMyPostcard($event.target.value)">
              <option value="unsent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
              <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
@@ -41,13 +42,16 @@
       </div>
       <div>
         <p>
-          Partner postcard: {{(loggedInUser | async)?.partnerPostcard}}
+          Partner postcard status (Did your receive your postcard?):
+          <br />
+          I have <strong>{{(loggedInUser | async)?.partnerPostcard}}</strong> my postcard.
         </p>
+        <!-- <img [src]="partnerIsSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
+        <select (change)="updatePartnerPostcard($event.target.value)">
+           <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
+           <option value="not received">I did NOT receive my card from {{(loggedInUserPartner | async)?.name}} yet</option>
+        </select>
       </div>
-      <select (change)="updatePartnerPostcard($event.target.value)">
-         <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
-         <option value="not received">I did NOT receive my card from {{(loggedInUserPartner | async)?.name}} yet</option>
-      </select>
     </div>
 
   </div>
