@@ -21,6 +21,7 @@ export class UserDetailComponent implements OnInit {
   loggedInUserPartner;
   isLoggedIn:boolean = false;
   isSent:boolean = false;
+  showPartner:boolean = false;
   partnerPostcardMessage: string = "not sent";
 
   userToDisplay;
@@ -51,10 +52,15 @@ export class UserDetailComponent implements OnInit {
    this.loggedInUser = this.userServiceService.getUserbyId(this.userId);
    this.loggedInUser.subscribe((data)=>{
 
-     console.log(data.partners ," sadfsd");
-     this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
+    //  console.log(data.partners ," sadfsd");
+    if (data.partners){
+      this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
+      this.showPartner=true;
+    }else{
+      this.showPartner=false;
+    }
    });
-   this.loggedInUserPartner = this.userServiceService.getUserbyId(this.userId);
+  //  this.loggedInUserPartner = this.userServiceService.getUserbyId(this.userId);
 
 
   }
@@ -93,9 +99,7 @@ export class UserDetailComponent implements OnInit {
     }else{
       this.partnerPostcardMessage= "not sent";
     }
-
   }
-
 
 
 }

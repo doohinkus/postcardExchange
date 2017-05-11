@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { GalleryComponent } from './gallery/gallery.component';
 import { MapComponent } from './map/map.component';
 import { AngularFire, FirebaseListObservable} from "angularfire2";
+// import { routerTransition } from './router.animations';
 import * as firebase from 'firebase';
 
 
@@ -12,6 +13,7 @@ import * as firebase from 'firebase';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // host: {'[@routerTransition]': ''},
   providers: [UserServiceService, AuthService, AngularFire]
 })
 

@@ -40,9 +40,7 @@
           </select>
       </div>
       <div>
-        <!-- <img src="assets/img/postcard-unsent.png" alt="postcard unsent" /> -->
         <p>
-
           Partner postcard: {{(loggedInUser | async)?.partnerPostcard}}
         </p>
       </div>
@@ -58,8 +56,10 @@
 </div>
 
 <div class="panel profile">
-  <div class="panel profile">
-    <!-- <h2>Postcard Partner</h2> -->
+  <div class="panel profile" *ngIf="!showPartner">
+    <h3>Your partner will chosen the last day of this month.</h3>
+  </div>
+  <div class="panel profile" *ngIf="showPartner">
     <div class="profile__image">
       <img src="{{(loggedInUserPartner | async)?.photoURL}}" alt="" />
     </div>
@@ -114,7 +114,7 @@
                 <button (click)="editUser(address.value, city.value, state.value, country.value, zip.value)" class="btn">Update</button>
         </div>
         <div class="edit__body__image">
-            <img src="./src/img/mailbox.png" alt="" />
+            <img src="assets/img/mailbox.png" alt="" />
         </div>
 
 
