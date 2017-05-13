@@ -24,6 +24,11 @@ export class UserDetailComponent implements OnInit {
   partnerIsSent:boolean = false;
   showPartner:boolean = false;
   partnerPostcardMessage: string = "not sent";
+  month:number;
+  day:number;
+  year:number;
+  displayDate:any;
+  emptyAddress:boolean = false;
 
   userToDisplay;
   constructor(
@@ -43,16 +48,15 @@ export class UserDetailComponent implements OnInit {
     })
 
   }
-
-
   ngOnInit() {
+    this.showDate();
+
     this.route.params.forEach((urlParameters)=>{
       this.userId = urlParameters["id"];
       console.log(this.userId);
     });
    this.loggedInUser = this.userServiceService.getUserbyId(this.userId);
    this.loggedInUser.subscribe((data)=>{
-
     //  console.log(data.partners ," sadfsd");
     if (data.partners){
       this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
@@ -61,7 +65,40 @@ export class UserDetailComponent implements OnInit {
       this.showPartner=false;
     }
    });
+   this.checkAddress(this.loggedInUser);
   //  this.loggedInUserPartner = this.userServiceService.getUserbyId(this.userId);
+  }
+  checkAddress(user){
+    user.subscribe((data)=>{
+     //  console.log(data.partners ," sadfsd");
+     if (!data.address || !data.city || !data.state || !data.zip){
+       this.emptyAddress=true;
+     }else{
+       this.emptyAddress=false;
+     }
+    });
+
+  }
+  showDate(){
+    let d = new Date();
+    let months = ["January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+   ];
+   let month = months[d.getMonth()];
+   this.displayDate = month + ", " + d.getDate() + ", " + d.getFullYear();
+
+
+    // console.log(this.displayDate);
 
 
   }

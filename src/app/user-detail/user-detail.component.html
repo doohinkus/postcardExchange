@@ -1,5 +1,6 @@
 <div *ngIf="isLoggedIn">
 
+<h3>{{displayDate}}</h3>
 <div class="panel profile">
   <div class="profile__image">
     <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
@@ -10,19 +11,30 @@
     <p>
       {{(loggedInUser | async)?.email}}
     </p>
-    <h4>Address:</h4>
-    <p>
-      {{(loggedInUser | async)?.address}}
-      <br>
-      {{(loggedInUser | async)?.city}}, {{(loggedInUser | async)?.state}}
-      <br>
-      {{(loggedInUser | async)?.country}}
-      <br>
-      {{(loggedInUser | async)?.zip}}
-    </p>
-    <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
-      Edit Profile
-    </button>
+    <div *ngIf="!emptyAddress">
+      <h4>Address:</h4>
+      <p>
+        {{(loggedInUser | async)?.address}}
+        <br>
+        {{(loggedInUser | async)?.city}}, {{(loggedInUser | async)?.state}}
+        <br>
+        {{(loggedInUser | async)?.country}}
+        <br>
+        {{(loggedInUser | async)?.zip}}
+      </p>
+      <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
+        Edit Profile
+      </button>
+    </div>
+    <div *ngIf="emptyAddress">
+      <p class="warning">Please enter your full address, making sure to complete all fields.
+      Use the "Edit Profile" button below to do so.
+      </p>
+      <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
+        Edit Profile
+      </button>
+    </div>
+
 
   </div>
   <div class="profile__postcard">
@@ -59,38 +71,36 @@
 
 </div>
 
-<div class="panel profile">
-  <div class="panel profile" *ngIf="!showPartner">
-    <h3>Your partner will chosen the last day of this month.</h3>
-  </div>
-  <div class="panel profile" *ngIf="showPartner">
-    <div class="profile__image">
-      <img src="{{(loggedInUserPartner | async)?.photoURL}}" alt="" />
+  <div class="panel profile">
+    <div class="span">{{displayDate}}</div>
+    <div class="panel profile" *ngIf="!showPartner">
+      <h3>Your partner will chosen the last day of this month.</h3>
     </div>
-    <div class="profile__details">
-      <h3>{{(loggedInUserPartner | async)?.name}}</h3>
-      <h4>Email:</h4>
-      <p>
-        {{(loggedInUserPartner | async)?.email}}
-      </p>
-      <h4>Address:</h4>
-      <p>
-        {{(loggedInUserPartner | async)?.address}}
-        <br>
-        {{(loggedInUserPartner | async)?.city}}, {{(loggedInUserPartner | async)?.state}}
-        <br>
-        {{(loggedInUserPartner | async)?.country}}
-        <br>
-        {{(loggedInUserPartner | async)?.zip}}
-      </p>
-      <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{partnerPostcardMessage}}</span> your postcard.</h4>
+    <div class="panel profile" *ngIf="showPartner">
+      <div class="profile__image">
+
+        <img src="{{(loggedInUserPartner | async)?.photoURL}}" alt="" />
+      </div>
+      <div class="profile__details">
+        <h3>{{(loggedInUserPartner | async)?.name}}</h3>
+        <h4>Email:</h4>
+        <p>
+          {{(loggedInUserPartner | async)?.email}}
+        </p>
+        <h4>Address:</h4>
+        <p>
+          {{(loggedInUserPartner | async)?.address}}
+          <br>
+          {{(loggedInUserPartner | async)?.city}}, {{(loggedInUserPartner | async)?.state}}
+          <br>
+          {{(loggedInUserPartner | async)?.country}}
+          <br>
+          {{(loggedInUserPartner | async)?.zip}}
+        </p>
+        <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{(loggedInUserPartner | async)?.partnerPostcard}}</span> your postcard.</h4>
+      </div>
     </div>
   </div>
-</div>
-
-
-<!-- </div> -->
-
 </div>
 
 

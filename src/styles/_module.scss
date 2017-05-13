@@ -12,6 +12,9 @@
 
   }
 }
+.span{
+  flex: 1 1 100%;
+}
 .sebm-google-map-container {
   // height: 300px;
 }
@@ -39,10 +42,14 @@
     order:2;
   }
 }
+.warning{
+  color: $accent-color;
+}
 
 .profile{
   display: flex;
   justify-content: space-between;
+
   @media screen and (max-width: $break-small) {
     display: block;
     margin: auto;
