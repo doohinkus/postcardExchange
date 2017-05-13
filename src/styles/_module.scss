@@ -49,6 +49,51 @@
 .profile{
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  &__address{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    p{
+      display: block;
+      font-size: 2em;
+      text-align: center;
+      line-height: 10pt;
+    }
+  }
+  &__user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    h3{
+      margin:0;
+      color: $accent-color;
+      font-weight: bolder;
+      // padding: $padding;
+    }
+    h4{
+      margin:0;
+      color: $secondary-color;
+    }
+    p{
+
+    }
+    img{
+      padding: $padding;
+      display: block;
+      border-radius: 50%;
+      width:30%;
+      height:30%;
+    }
+    @media screen and (max-width: $break-small) {
+      display: block;
+      margin: auto;
+      text-align: center;
+      img{
+        margin: auto;
+      }
+    }
+  }
 
   @media screen and (max-width: $break-small) {
     display: block;
@@ -60,11 +105,10 @@
     padding: $padding;
     img{
       border-radius: 50%;
-      width:200px;
+      width:150px;
       @media screen and (max-width: $break-small) {
         width: 75px;
       }
-
     }
   }
 
@@ -87,6 +131,9 @@
   }
   &__postcard{
    padding: $padding;
+   img{
+     padding: $padding;
+   }
 
   }
 }

@@ -1,27 +1,38 @@
 <div *ngIf="isLoggedIn">
-
-<h3>{{displayDate}}</h3>
 <div class="panel profile">
-  <div class="profile__image">
-    <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
+  <div>{{displayDate}}</div>
+  <div class="profile__user">
+   <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
+   <div class="user__details">
+     <h3>{{(loggedInUser | async)?.name}}</h3>
+     <h4>Email:</h4>
+     <p>
+       {{(loggedInUser | async)?.email}}
+     </p>
+   </div>
   </div>
+
+  <!-- <div class="profile__image">
+    <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
+  </div> -->
   <div class="profile__details">
-    <h3>{{(loggedInUser | async)?.name}}</h3>
+    <!-- <h3>{{(loggedInUser | async)?.name}}</h3>
     <h4>Email:</h4>
     <p>
       {{(loggedInUser | async)?.email}}
-    </p>
+    </p> -->
     <div *ngIf="!emptyAddress">
-      <h4>Address:</h4>
-      <p>
-        {{(loggedInUser | async)?.address}}
-        <br>
-        {{(loggedInUser | async)?.city}}, {{(loggedInUser | async)?.state}}
-        <br>
-        {{(loggedInUser | async)?.country}}
-        <br>
-        {{(loggedInUser | async)?.zip}}
-      </p>
+      <div class="profile__address">
+        <div class="address__field">
+          <h4>Address:</h4>
+        </div>
+        <div class="address__data">
+          <p>{{(loggedInUser | async)?.address}}</p>
+          <p>{{(loggedInUser | async)?.city}}, {{(loggedInUser | async)?.state}}</p>
+          <p>{{(loggedInUser | async)?.country}}</p>
+          <p>{{(loggedInUser | async)?.zip}}</p>
+        </div>
+      </div>
       <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
         Edit Profile
       </button>
@@ -42,22 +53,21 @@
 
     <div class="profile__postcard__images">
       <div>
-        <p>
-          <!-- My postcard: {{(loggedInUser | async)?.postcard}} -->
-          My Postcard Status (Did you send your postcard?):
-        </p>
-        <img [src]="isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" />
-          <select (change)="updateMyPostcard($event.target.value)">
-             <option value="unsent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
-             <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
-          </select>
+        <h3>
+          Did you send your postcard?
+        </h3>
+        <select (change)="updateMyPostcard($event.target.value)">
+          <option value="unsent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
+          <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
+        </select>
+        <img class="center" [src]="isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" />
       </div>
       <div>
-        <p>
-          Partner postcard status (Did your receive your postcard?):
+        <h3>
+          Did your receive your postcard?
+        </h3>
           <br />
           I have <strong>{{(loggedInUser | async)?.partnerPostcard}}</strong> my postcard.
-        </p>
         <!-- <img [src]="partnerIsSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
         <select (change)="updatePartnerPostcard($event.target.value)">
            <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
@@ -72,7 +82,7 @@
 </div>
 
   <div class="panel profile">
-    <div class="span">{{displayDate}}</div>
+    <div>{{displayDate}}</div>
     <div class="panel profile" *ngIf="!showPartner">
       <h3>Your partner will chosen the last day of this month.</h3>
     </div>
