@@ -5,12 +5,19 @@
   justify-content: center;
   flex-wrap: wrap;
   @extend .bg;
+  &__image{
+    padding-top:$padding*2;
+  }
   img{
     align-self: center;
     max-width: 100%;
-   height: auto;
+    height: auto;
 
   }
+}
+.right{
+  // text-align: right;
+  margin-right:0;
 }
 .span{
   flex: 1 1 100%;
@@ -48,23 +55,30 @@
 
 .profile{
   display: flex;
-  justify-content: space-between;
+  // justify-content: center;
+  // align-items: center;
+  justify-content: space-around;
   flex-direction: column;
   &__address{
-    text-align: center;
+    // text-align: center;
     display: flex;
     flex-direction: column;
     p{
-      display: block;
-      font-size: 2em;
-      text-align: center;
-      line-height: 10pt;
+      // display: block;
+      // margin-left: 45%;
+      margin: auto;
+      line-height: 16pt;
+      font-size: 1.5em;
+      @media screen and (max-width: $break-small) {
+        margin: auto;
+        font-size: 1em;
+      }
     }
   }
   &__user{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    // align-items: center;
     h3{
       margin:0;
       color: $accent-color;

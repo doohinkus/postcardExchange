@@ -9,49 +9,39 @@
      <p>
        {{(loggedInUser | async)?.email}}
      </p>
+     <!-- <div class="profile__details"> -->
+       <div *ngIf="!emptyAddress">
+         <div class="profile__address">
+           <div class="address__field">
+             <h4>Address:</h4>
+           </div>
+           <div class="address__data">
+             <p>{{(loggedInUser | async)?.address}}</p>
+             <p>{{(loggedInUser | async)?.city}}, {{(loggedInUser | async)?.state}}</p>
+             <p>{{(loggedInUser | async)?.country}}</p>
+             <p>{{(loggedInUser | async)?.zip}}</p>
+           </div>
+         </div>
+         <button type="button" class="btn btn-primary btn-lg right" data-toggle="modal" data-target="#myModal">
+           Edit Profile
+         </button>
+       </div>
+       <div *ngIf="emptyAddress">
+         <p class="warning">Please enter your full address, making sure to complete all fields.
+         Use the "Edit Profile" button below to do so.
+         </p>
+         <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
+           Edit Profile
+         </button>
+       </div>
+     <!-- </div> -->
    </div>
   </div>
 
-  <!-- <div class="profile__image">
-    <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
-  </div> -->
-  <div class="profile__details">
-    <!-- <h3>{{(loggedInUser | async)?.name}}</h3>
-    <h4>Email:</h4>
-    <p>
-      {{(loggedInUser | async)?.email}}
-    </p> -->
-    <div *ngIf="!emptyAddress">
-      <div class="profile__address">
-        <div class="address__field">
-          <h4>Address:</h4>
-        </div>
-        <div class="address__data">
-          <p>{{(loggedInUser | async)?.address}}</p>
-          <p>{{(loggedInUser | async)?.city}}, {{(loggedInUser | async)?.state}}</p>
-          <p>{{(loggedInUser | async)?.country}}</p>
-          <p>{{(loggedInUser | async)?.zip}}</p>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
-        Edit Profile
-      </button>
-    </div>
-    <div *ngIf="emptyAddress">
-      <p class="warning">Please enter your full address, making sure to complete all fields.
-      Use the "Edit Profile" button below to do so.
-      </p>
-      <button type="button" class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
-        Edit Profile
-      </button>
-    </div>
-
-
-  </div>
   <div class="profile__postcard">
 
 
-    <div class="profile__postcard__images">
+    <div class="profile__postcard__images" *ngIf="showPartner">
       <div>
         <h3>
           Did you send your postcard?
@@ -66,13 +56,13 @@
         <h3>
           Did your receive your postcard?
         </h3>
+        <select (change)="updatePartnerPostcard($event.target.value)">
+          <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
+          <option value="not received">I did NOT receive my card from {{(loggedInUserPartner | async)?.name}} yet</option>
+        </select>
           <br />
           I have <strong>{{(loggedInUser | async)?.partnerPostcard}}</strong> my postcard.
         <!-- <img [src]="partnerIsSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
-        <select (change)="updatePartnerPostcard($event.target.value)">
-           <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
-           <option value="not received">I did NOT receive my card from {{(loggedInUserPartner | async)?.name}} yet</option>
-        </select>
       </div>
     </div>
 
