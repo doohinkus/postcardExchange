@@ -52,7 +52,18 @@
 .warning{
   color: $accent-color;
 }
-
+.bold{
+  font-weight: bold;
+}
+.accent-color{
+  color:$accent-color;
+}
+.base-color{
+  color:$base-color;
+}
+.secondary-color{
+  color:$secondary-color;
+}
 .profile{
   display: flex;
   // justify-content: center;

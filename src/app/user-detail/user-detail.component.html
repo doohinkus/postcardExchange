@@ -1,6 +1,9 @@
-<div *ngIf="isLoggedIn">
-<div class="panel profile">
-  <div>{{displayDate}}</div>
+<div class="panel profile" *ngIf="isLoggedIn">
+  <h4 class="accent-color bold" *ngIf="showPartner">
+    Your partner, {{(loggedInUserPartner | async)?.name}}, has <span class="secondary-color">{{(loggedInUserPartner | async)?.postcard}}</span> your postcard.
+  </h4>
+  <div class="base-color bold">{{displayDate}}</div>
+
   <div class="profile__user">
    <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
    <div class="user__details">
@@ -34,20 +37,17 @@
            Edit Profile
          </button>
        </div>
-     <!-- </div> -->
    </div>
   </div>
 
   <div class="profile__postcard">
-
-
     <div class="profile__postcard__images" *ngIf="showPartner">
       <div>
         <h3>
           Did you send your postcard?
         </h3>
         <select (change)="updateMyPostcard($event.target.value)">
-          <option value="unsent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
+          <option value="not sent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
           <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
         </select>
         <img class="center" [src]="isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" />
@@ -65,43 +65,45 @@
         <!-- <img [src]="partnerIsSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
       </div>
     </div>
-
   </div>
-
-
 </div>
 
-  <div class="panel profile">
-    <div>{{displayDate}}</div>
+  <!-- <div class="panel profile"> -->
     <div class="panel profile" *ngIf="!showPartner">
       <h3>Your partner will chosen the last day of this month.</h3>
     </div>
-    <div class="panel profile" *ngIf="showPartner">
-      <div class="profile__image">
 
-        <img src="{{(loggedInUserPartner | async)?.photoURL}}" alt="" />
+
+
+    <div class="panel profile" *ngIf="showPartner">
+
+      <div class="user__details">
+        <div class="profile__image">
+          <img src="{{(loggedInUserPartner | async)?.photoURL}}" alt="" />
+        </div>
+        <div class="profile__details">
+          <h3>{{(loggedInUserPartner | async)?.name}}</h3>
+          <h4>Email:</h4>
+          <p>
+            {{(loggedInUserPartner | async)?.email}}
+          </p>
+          <h4>Address:</h4>
+          <p>
+            {{(loggedInUserPartner | async)?.address}}
+            <br>
+            {{(loggedInUserPartner | async)?.city}}, {{(loggedInUserPartner | async)?.state}}
+            <br>
+            {{(loggedInUserPartner | async)?.country}}
+            <br>
+            {{(loggedInUserPartner | async)?.zip}}
+          </p>
+          <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{(loggedInUserPartner | async)?.partnerPostcard}}</span> your postcard.</h4>
+        </div>
       </div>
-      <div class="profile__details">
-        <h3>{{(loggedInUserPartner | async)?.name}}</h3>
-        <h4>Email:</h4>
-        <p>
-          {{(loggedInUserPartner | async)?.email}}
-        </p>
-        <h4>Address:</h4>
-        <p>
-          {{(loggedInUserPartner | async)?.address}}
-          <br>
-          {{(loggedInUserPartner | async)?.city}}, {{(loggedInUserPartner | async)?.state}}
-          <br>
-          {{(loggedInUserPartner | async)?.country}}
-          <br>
-          {{(loggedInUserPartner | async)?.zip}}
-        </p>
-        <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{(loggedInUserPartner | async)?.partnerPostcard}}</span> your postcard.</h4>
-      </div>
+
     </div>
-  </div>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
 
 
 <!-- Modal -->
