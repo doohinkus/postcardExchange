@@ -26,6 +26,7 @@ export class UserDetailComponent implements OnInit {
   showPartner:boolean = false;
   senderPostcard:boolean=false;
   partnerPostcardMessage: string = "not sent";
+  senderPostcardMessage: string = "not sent";
   month:number;
   day:number;
   year:number;
@@ -53,22 +54,23 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
     this.showDate();
 
-    this.route.params.forEach((urlParameters)=>{
-      this.userId = urlParameters["id"];
-      console.log(this.userId);
-    });
+   this.route.params.forEach((urlParameters)=>{
+    this.userId = urlParameters["id"];
+   });
    this.loggedInUser = this.userServiceService.getUserbyId(this.userId);
    this.loggedInUser.subscribe((data)=>{
   //if user has been paired
     if (data.partners){
       this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
       this.loggedInUserSender = this.userServiceService.getUserbyId(data.receipient);
+      this.checkPostcardSender(this.loggedInUserSender);
       this.showPartner=true;
     }else{
       this.showPartner=false;
     }
    });
    this.checkAddress(this.loggedInUser);
+
   //  this.loggedInUserPartner = this.userServiceService.getUserbyId(this.userId);
   }
   checkAddress(user){
@@ -81,6 +83,17 @@ export class UserDetailComponent implements OnInit {
      }
     });
   }
+  checkPostcardSender(user){
+    user.subscribe((data)=>{
+     //  console.log(data.partners ," sadfsd");
+     if (!data.postcard){
+       this.senderPostcardMessage="NOT sent";
+     }else{
+       this.senderPostcardMessage=data.postcard;
+     }
+    });
+  }
+
 
   showDate(){
     let d = new Date();
@@ -99,11 +112,6 @@ export class UserDetailComponent implements OnInit {
    ];
    let month = months[d.getMonth()];
    this.displayDate = month + ", " + d.getDate() + ", " + d.getFullYear();
-
-
-    // console.log(this.displayDate);
-
-
   }
   editUser(address, city, state, country, zip){
     var params = {
@@ -119,6 +127,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   updateMyPostcard(option){
+    //make this sticky it shoud NOT reset on load it should remember your choice
     var params = {
       "postcard": option
     }
@@ -127,7 +136,7 @@ export class UserDetailComponent implements OnInit {
     }else{
       this.isSent=false;
     }
-    console.log(this.isSent, " is sent")
+    // console.log(this.isSent, " is sent")
     this.userServiceService.editUser(this.userId, params);
 
   }

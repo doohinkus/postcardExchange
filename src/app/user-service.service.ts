@@ -21,6 +21,7 @@ export class UserServiceService {
     userEntry.update({
       "partners" : addresseeId,
       "receipient" : receipientId,
+      "postcard" : "not sent"
     });
   }
 
