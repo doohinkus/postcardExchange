@@ -68,7 +68,7 @@
     <div class="panel profile" *ngIf="showPartner">
       <div>
         <h4 class="accent-color bold" *ngIf="showPartner">
-          You have <span class="secondary-color">{{(loggedInUser | async)?.postcard}}</span> your postcard this month.
+          You have <span class="secondary-color">{{(loggedInUser | async)?.postcard}}</span> your postcard to your receiving partner, {{(loggedInUserPartner | async)?.name}}, this month.
         </h4>
         <!-- <img class="center" [src]="this.isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
         <select (change)="updateMyPostcard($event.target.value)">
