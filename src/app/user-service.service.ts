@@ -16,9 +16,12 @@ export class UserServiceService {
 
 
   }
-  pairUsers(userId: string, pairId: string){
+  pairUsers(userId: string, addresseeId: string, receipientId: string){
     var userEntry = this.getUserbyId(userId);
-    userEntry.update({"partners": pairId});
+    userEntry.update({
+      "partners" : addresseeId,
+      "receipient" : receipientId,
+    });
   }
 
   getUsers(){

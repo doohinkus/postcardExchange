@@ -33,9 +33,15 @@ export class PairComponent implements OnInit {
     //pair users with person below them in the array, last person links with top person
     keys.forEach((key, index) => {
       if (index < keys.length-1){
-        this.UserServiceService.pairUsers(keys[index], keys[index+1]);
+        if(index>0){
+      //if it's NOT the first person, pair with person above
+          this.UserServiceService.pairUsers(keys[index], keys[index+1], keys[index-1]);
+        }else{
+      //it's the first person, so pair with the last person in the array
+          this.UserServiceService.pairUsers(keys[index], keys[index+1], keys[keys.length-1]);
+        }
       }else{
-        this.UserServiceService.pairUsers(keys[index], keys[index-index]);
+        this.UserServiceService.pairUsers(keys[index], keys[index-index], keys[index-1]);
       }
       console.log(key, index);
     });
