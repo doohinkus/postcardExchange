@@ -19,10 +19,12 @@ export class UserDetailComponent implements OnInit {
   address:string =null;
   loggedInUser;
   loggedInUserPartner;
+  loggedInUserSender;
   isLoggedIn:boolean = false;
   isSent:boolean = false;
   partnerIsSent:boolean = false;
   showPartner:boolean = false;
+  senderPostcard:boolean=false;
   partnerPostcardMessage: string = "not sent";
   month:number;
   day:number;
@@ -57,9 +59,10 @@ export class UserDetailComponent implements OnInit {
     });
    this.loggedInUser = this.userServiceService.getUserbyId(this.userId);
    this.loggedInUser.subscribe((data)=>{
-    //  console.log(data.partners ," sadfsd");
+  //if user has been paired
     if (data.partners){
       this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
+      this.loggedInUserSender = this.userServiceService.getUserbyId(data.receipient);
       this.showPartner=true;
     }else{
       this.showPartner=false;
@@ -77,8 +80,8 @@ export class UserDetailComponent implements OnInit {
        this.emptyAddress=false;
      }
     });
-
   }
+
   showDate(){
     let d = new Date();
     let months = ["January",
@@ -119,12 +122,13 @@ export class UserDetailComponent implements OnInit {
     var params = {
       "postcard": option
     }
-    this.userServiceService.editUser(this.userId, params);
     if (option==="sent"){
       this.isSent=true;
     }else{
       this.isSent=false;
     }
+    console.log(this.isSent, " is sent")
+    this.userServiceService.editUser(this.userId, params);
 
   }
   updatePartnerPostcard(option){

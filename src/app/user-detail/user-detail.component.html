@@ -1,9 +1,5 @@
 <div class="panel profile" *ngIf="isLoggedIn">
-  <h4 class="accent-color bold" *ngIf="showPartner">
-    Your partner, {{(loggedInUserPartner | async)?.name}}, has <span class="secondary-color">{{(loggedInUserPartner | async)?.postcard}}</span> your postcard.
-  </h4>
   <div class="base-color bold">{{displayDate}}</div>
-
   <div class="profile__user">
    <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
    <div class="user__details">
@@ -43,18 +39,11 @@
   <div class="profile__postcard">
     <div class="profile__postcard__images" *ngIf="showPartner">
       <div>
+        <h4 class="accent-color bold" *ngIf="showPartner">
+          Your sending partner, {{(loggedInUserSender | async)?.name}}, has <span class="secondary-color">{{(loggedInUserSender | async)?.postcard}}</span> your postcard.
+        </h4>
         <h3>
-          Did you send your postcard?
-        </h3>
-        <select (change)="updateMyPostcard($event.target.value)">
-          <option value="not sent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
-          <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
-        </select>
-        <img class="center" [src]="isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" />
-      </div>
-      <div>
-        <h3>
-          Did your receive your postcard?
+          Did your receive your postcard from {{(loggedInUserSender | async)?.name}}?
         </h3>
         <select (change)="updatePartnerPostcard($event.target.value)">
           <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
@@ -70,13 +59,15 @@
 
   <!-- <div class="panel profile"> -->
     <div class="panel profile" *ngIf="!showPartner">
-      <h3>Your partner will chosen the last day of this month.</h3>
+      <h3>Your receiving partner will chosen the last day of this month.</h3>
     </div>
 
 
 
     <div class="panel profile" *ngIf="showPartner">
-
+      <div>
+        Here is the information for receiving partner. Please send him/her a postcard.
+      </div>
       <div class="user__details">
         <div class="profile__image">
           <img src="{{(loggedInUserPartner | async)?.photoURL}}" alt="" />
@@ -97,7 +88,16 @@
             <br>
             {{(loggedInUserPartner | async)?.zip}}
           </p>
-          <h4>{{(loggedInUserPartner | async)?.name}} has <span>{{(loggedInUserPartner | async)?.partnerPostcard}}</span> your postcard.</h4>
+          <div>
+            <h4>
+              Did you send your postcard to {{(loggedInUserPartner | async)?.name}}
+            </h4>
+            <select (change)="updateMyPostcard($event.target.value)">
+              <option value="not sent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
+              <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
+            </select>
+            <img class="center" [src]="this.isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" />
+          </div>
         </div>
       </div>
 
