@@ -59,6 +59,8 @@ export class UserDetailComponent implements OnInit {
    });
    this.loggedInUser = this.userServiceService.getUserbyId(this.userId);
    this.loggedInUser.subscribe((data)=>{
+    this.updateMyPostcard(data.postcard);
+    this.updatePartnerPostcard(data.partnerPostcard);
   //if user has been paired
     if (data.partners){
       this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
@@ -70,6 +72,7 @@ export class UserDetailComponent implements OnInit {
     }
    });
    this.checkAddress(this.loggedInUser);
+
 
   //  this.loggedInUserPartner = this.userServiceService.getUserbyId(this.userId);
   }
@@ -127,7 +130,6 @@ export class UserDetailComponent implements OnInit {
   }
 
   updateMyPostcard(option){
-    //make this sticky it shoud NOT reset on load it should remember your choice
     var params = {
       "postcard": option
     }
@@ -136,7 +138,7 @@ export class UserDetailComponent implements OnInit {
     }else{
       this.isSent=false;
     }
-    // console.log(this.isSent, " is sent")
+    //update firebase
     this.userServiceService.editUser(this.userId, params);
 
   }

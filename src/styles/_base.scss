@@ -42,7 +42,7 @@ img{
 }
 button{
   border-radius: 5px;
-  // box-shadow: 2px 2px 0px lighten($base-color, 20%);
+  cursor: pointer;
 }
 select{
   font-family: $base-font;

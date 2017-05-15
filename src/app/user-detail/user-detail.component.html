@@ -43,17 +43,20 @@
           Your sending partner, {{(loggedInUserSender | async)?.name}}, has
           <span class="secondary-color">{{senderPostcardMessage}}</span> your postcard.
         </h4>
+        <div *ngIf="partnerIsSent">
+          <p>
+            You indicated that <span class="accent-color">you have <b>{{(loggedInUser | async)?.partnerPostcard}}</b></span> your postcard from {{(loggedInUserSender | async)?.name}}.
+          </p>
+          <small>
+            *There has been a mistake. <span class="mistake" (click)='updatePartnerPostcard("not received")'>I have NOT received my postcard</span>.
+          </small>
 
-        <div *ngIf="senderPostcardMessage==='sent'">
-          <h3>
-            Did your receive your postcard from {{(loggedInUserSender | async)?.name}}?
-          </h3>
-          <select (change)="updatePartnerPostcard($event.target.value)">
-            <option value="received">I received my card from {{(loggedInUserPartner | async)?.name}}</option>
-            <option value="not received">I did NOT receive my card from {{(loggedInUserPartner | async)?.name}} yet</option>
-          </select>
-          <br />
-          I have <strong>{{(loggedInUser | async)?.partnerPostcard}}</strong> my postcard.
+        </div>
+        <div *ngIf="!partnerIsSent">
+          <p>
+            When you receive your postcard from {{(loggedInUserSender | async)?.name}}, click the button below.
+          </p>
+         <button class="btn center" (click)='updatePartnerPostcard("received")'>Postcard Received</button>
         </div>
         <!-- <img [src]="partnerIsSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
       </div>
@@ -63,7 +66,7 @@
 
   <!-- <div class="panel profile"> -->
     <div class="panel profile" *ngIf="!showPartner">
-      <h3>Your receiving partner will chosen the last day of this month.</h3>
+      <h3>The last day of the month you will be paired with a person that you will send a postcard to (receiving partner) and a person who will be sending a postcard to you (sending partner)--most of the time your sending partner and receivng partner will NOT the same person.</h3>
     </div>
     <div class="panel profile" *ngIf="showPartner">
       <div>
@@ -71,14 +74,18 @@
           You have <span class="secondary-color">{{(loggedInUser | async)?.postcard}}</span> your postcard to your receiving partner, {{(loggedInUserPartner | async)?.name}}, this month.
         </h4>
         <!-- <img class="center" [src]="this.isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
-        <select (change)="updateMyPostcard($event.target.value)">
+        <!-- <select (change)="updateMyPostcard($event.target.value)">
           <option value="not sent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
           <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
-        </select>
+        </select> -->
+
       </div>
       <div class="user__details" *ngIf='isSent'>
-        <h3>Thanks for sending {{(loggedInUserPartner | async)?.name}} a postcard.
+        <h3>Thanks for sending a postcard.
         {{(loggedInUserPartner | async)?.name}} will be checking the mail.</h3>
+        <small>
+          *There has been a mistake. <span class="mistake" (click)='updateMyPostcard(" not sent")'>I did NOT send my postcard</span>.
+        </small>
       </div>
       <div class="user__details" *ngIf='!isSent'>
         <div class="profile__image">
@@ -104,6 +111,8 @@
             {{(loggedInUserPartner | async)?.zip}}
           </p>
         </div>
+           When you mail your postcard to {{(loggedInUserPartner | async)?.name}}, click the button below.
+          <button class="btn center" (click)='updateMyPostcard("sent")'>Postcard Sent</button>
       </div>
 
     </div>
