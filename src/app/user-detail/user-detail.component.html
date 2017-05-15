@@ -70,23 +70,27 @@
     </div>
     <div class="panel profile" *ngIf="showPartner">
       <div>
-        <h4 class="accent-color bold" *ngIf="showPartner">
+        <h4 class="accent-color bold" *ngIf="!isSent">
           You have <span class="secondary-color">{{(loggedInUser | async)?.postcard}}</span> your postcard to your receiving partner, {{(loggedInUserPartner | async)?.name}}, this month.
         </h4>
-        <!-- <img class="center" [src]="this.isSent ? 'assets/img/postcard-sent.png' : 'assets/img/postcard-unsent.png'" alt="postcard status" /> -->
-        <!-- <select (change)="updateMyPostcard($event.target.value)">
-          <option value="not sent">I did NOT send my card to {{(loggedInUserPartner | async)?.name}} yet</option>
-          <option value="sent">I sent my card to {{(loggedInUserPartner | async)?.name}}</option>
-        </select> -->
+        <div *ngIf="isSent">
+          <h4 class="accent-color bold" >Thanks for <span class="secondary-color">sending</span> a postcard.
+            {{(loggedInUserPartner | async)?.name}} will be checking the mail.
+          </h4>
+          <small>
+            *There has been a mistake. <span class="mistake" (click)='updateMyPostcard(" not sent")'>I did NOT send my postcard</span>.
+          </small>
+        </div>
+
 
       </div>
-      <div class="user__details" *ngIf='isSent'>
+      <!-- <div class="user__details" *ngIf='isSent'>
         <h3>Thanks for sending a postcard.
         {{(loggedInUserPartner | async)?.name}} will be checking the mail.</h3>
         <small>
           *There has been a mistake. <span class="mistake" (click)='updateMyPostcard(" not sent")'>I did NOT send my postcard</span>.
         </small>
-      </div>
+      </div> -->
       <div class="user__details" *ngIf='!isSent'>
         <div class="profile__image">
           <div>
