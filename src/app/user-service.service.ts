@@ -13,9 +13,8 @@ export class UserServiceService {
 
   constructor(private angularFire: AngularFire) {
     this.users = angularFire.database.list('users');
-
-
   }
+
   pairUsers(userId: string, addresseeId: string, receipientId: string){
     var userEntry = this.getUserbyId(userId);
     userEntry.update({
@@ -31,10 +30,7 @@ export class UserServiceService {
   }
 
   addUser(user, uid){
-    // this.users.push(newUser);
-    //just use firebase!!!!!
     return firebase.database().ref('users/'+uid).update(user);
-
   }
 
   getUserbyId(userId: string){
@@ -43,7 +39,6 @@ export class UserServiceService {
   editUser(id, params){
     var userEntry = this.getUserbyId(id);
     userEntry.update(params);
-
   }
 
 
