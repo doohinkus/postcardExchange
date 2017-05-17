@@ -41,14 +41,20 @@ export class AppComponent implements OnInit{
   }
   login(){
     this.AuthService.loginWithGoogle().then((data) =>{
-      var info = {
-         "name": data.auth.displayName,
-         "photoURL": data.auth.photoURL,
-         "email": data.auth.email,
-         "postcard" : "not sent",
-         "partnerPostcard": "not received"
-      }
-      this.UserServiceService.addUser(info, data.auth.uid);
+      //if they are new user add them
+      this.UserServiceService.getUserbyId(data.auth.uid).subscribe((data)=>{
+        if (!data.name){
+          var info = {
+             "name": data.auth.displayName,
+             "photoURL": data.auth.photoURL,
+             "email": data.auth.email,
+             "postcard" : "not sent",
+             "partnerPostcard": "not received"
+          }
+          this.UserServiceService.addUser(info, data.auth.uid);
+        }
+      });
+
 //write data
       // console.log(data.auth);
       // //uid
