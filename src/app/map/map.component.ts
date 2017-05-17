@@ -43,28 +43,22 @@ export class MapComponent implements OnInit {
 
       this.UrlShrinkerService.shrinkUrl(img).subscribe(
         (data) => {
-          // this.firebaseLink = data.data.url;
           this.UrlShrinkerService.shrinkUrl(this.cardUrl+data.data.url).subscribe(
             (data) => {
-              console.log(data.data.url, "long one");
+              //where the magic happens
               this.tweetLink = this.twitterUrl + this. message + data.data.url;
             });
-          // this.tweetLink = this.twitterUrl+this.message+data.data.url;
-          // console.log(data.data);
+
         },
         (err) => {
           console.log(err)
         },
         () => {
-          // this.tweetLink = this.tweetLink;
-          //  console.log("completed", url);
+
         }
 
       );
-      let link = this.cardUrl + this.firebaseLink;
-      // console.log("sadfsdf", this.firebaseLink);
-    // this.twitterImage=img;
-    // console.log(this.twitterImage);
+
   }
   ngOnInit() {
     this.tweetImage(this.image.url);
