@@ -44,7 +44,9 @@ export class AppComponent implements OnInit{
       var info = {
          "name": data.auth.displayName,
          "photoURL": data.auth.photoURL,
-         "email": data.auth.email
+         "email": data.auth.email,
+         "postcard" : "not sent",
+         "partnerPostcard": "not received"
       }
       this.UserServiceService.addUser(info, data.auth.uid);
 //write data
