@@ -17,6 +17,7 @@ export class UserServiceService {
 
   pairUsers(userId: string, addresseeId: string, receipientId: string){
     var userEntry = this.getUserbyId(userId);
+    // if ()
     userEntry.update({
       "partners" : addresseeId,
       "receipient" : receipientId,
