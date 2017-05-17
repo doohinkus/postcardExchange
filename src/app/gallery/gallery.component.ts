@@ -53,6 +53,9 @@ showMap(){
 
   ngOnInit() {
       this.images = this.GalleryService.getImages();
+      // this.images.subscribe((data)=>{
+      //   console.log(data);
+      // })
       // this.getZip(97055);
   }
 
