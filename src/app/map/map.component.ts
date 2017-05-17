@@ -22,7 +22,9 @@ export class MapComponent implements OnInit {
   twitterUrl:string="https://twitter.com/intent/tweet?text=";
   twitterImage:string;
   message:string = 'Check out this awesome postcard from our international postcard exchange.';
-  tweetLink:string;
+  tweetLink:string = "#/gallery";
+  cardUrl:string = "https://quiet-garden-97160.herokuapp.com/?postcard=";
+  firebaseLink: string;
   // https://quiet-garden-97160.herokuapp.com/?postcard=
 
   constructor(public UrlShrinkerService: UrlShrinkerService) { }
@@ -35,13 +37,20 @@ export class MapComponent implements OnInit {
     this.toggleState();
   }
   tweetImage(img){
-    // twitterUrl + 'Check out these awesome postcards.' + twitterImage
+      //place shorter link into heroku app
+
+      //then shorten that link and add to message
 
       this.UrlShrinkerService.shrinkUrl(img).subscribe(
         (data) => {
-          // console.log(data.data.url);
-          this.tweetLink = this.twitterUrl+this.message+data.data.url;
-          // console.log(this.tweetLink);
+          // this.firebaseLink = data.data.url;
+          this.UrlShrinkerService.shrinkUrl(this.cardUrl+data.data.url).subscribe(
+            (data) => {
+              console.log(data.data.url, "long one");
+              this.tweetLink = this.twitterUrl + this. message + data.data.url;
+            });
+          // this.tweetLink = this.twitterUrl+this.message+data.data.url;
+          // console.log(data.data);
         },
         (err) => {
           console.log(err)
@@ -52,7 +61,8 @@ export class MapComponent implements OnInit {
         }
 
       );
-
+      let link = this.cardUrl + this.firebaseLink;
+      // console.log("sadfsdf", this.firebaseLink);
     // this.twitterImage=img;
     // console.log(this.twitterImage);
   }
