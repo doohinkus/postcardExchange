@@ -16,7 +16,8 @@ import { Component, OnInit, Input, trigger, state, animate, transition, style } 
 export class MapComponent implements OnInit {
   state: string = 'hide';
   showMap: boolean = false;
-  twitterUrl:string="https://twitter.com/intent/tweet?text=https://quiet-garden-97160.herokuapp.com/?postcard=";
+  twitterUrl:string="https://twitter.com/intent/tweet?text=";
+  // https://quiet-garden-97160.herokuapp.com/?postcard=
 
 
   constructor() { }
