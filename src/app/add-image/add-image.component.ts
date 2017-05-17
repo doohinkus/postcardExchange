@@ -34,7 +34,6 @@ export class AddImageComponent implements OnInit {
     this.AuthService.af.auth.subscribe((auth) =>{
       if (auth==null){
          //not logged in
-         console.log(auth , "asdfds");
          this.isLoggedIn = false;
       }else{
         //logged in
@@ -64,7 +63,7 @@ export class AddImageComponent implements OnInit {
         if (user) {
           // User is signed in.
           // var uid:string = user.uid;
-          console.log("signin", user.uid);
+          // console.log("signin", user.uid);
           uid = user.uid;
 
           // userName = ;
@@ -72,7 +71,7 @@ export class AddImageComponent implements OnInit {
 
         } else {
           // No user is signed in.
-          console.log("No hackers!!!!");
+          // console.log("No hackers!!!!");
         }
 
 
@@ -99,7 +98,7 @@ export class AddImageComponent implements OnInit {
       error => console.log(error),
       () => {
        var thisPerson = this.UserServiceService.getUserbyId(uid).subscribe((data) =>{
-         console.log(data.name);
+        //  console.log(data.name);
          this.GalleryService.uploadImage(
            file,
            data.name,

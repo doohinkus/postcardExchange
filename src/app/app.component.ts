@@ -48,16 +48,16 @@ export class AppComponent implements OnInit{
       }
       this.UserServiceService.addUser(info, data.auth.uid);
 //write data
-      console.log(data.auth);
-      //uid
-      console.log(data.auth.uid);
-      this.userID = data.auth.uid;
-      //photoURL
-      console.log(data.auth.photoURL);
-      //email
-      console.log(data.auth.email);
-      //displayName
-      console.log(data.auth.displayName);
+      // console.log(data.auth);
+      // //uid
+      // console.log(data.auth.uid);
+      // this.userID = data.auth.uid;
+      // //photoURL
+      // console.log(data.auth.photoURL);
+      // //email
+      // console.log(data.auth.email);
+      // //displayName
+      // console.log(data.auth.displayName);
       this.userID = data.auth.uid;
       this.router.navigate(['profile', data.auth.uid]);
       this.isLoggedIn = true;
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit{
 
   logout(){
     this.AuthService.logout();
-    console.log("loggedout");
+    // console.log("loggedout");
     this.isLoggedIn = false;
     this.router.navigate(['']);
 
