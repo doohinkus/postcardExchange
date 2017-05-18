@@ -172,6 +172,7 @@
 
   }
 }
+
 .gallery{
   &__heading{
     display: flex;
@@ -180,7 +181,14 @@
     // padding: $padding;
     &__actions__map{
       display:none;
-      border:2px solid black;
+      // border:2px solid black;
+    }
+    &__actions__buttons{
+
+        img{
+          border: 2px solid balck;
+        }
+
     }
     &__image{
       img{
@@ -189,6 +197,7 @@
         margin-right:$padding;
         align-self: flex-end;
       }
+
 
     }
     &__info{
@@ -500,4 +509,10 @@ input[type="file"]{
 .responsive{
   width: 100%;
   height: auto;
+}
+.grow{
+  transition: all, .2s, ease-in-out;
+}
+.grow:hover{
+  transform: scale(1.2);
 }

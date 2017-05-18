@@ -20,12 +20,12 @@
     <img class="header__image" src="assets/img/header.png" alt="Postcard Exchange Header" />
     <div class="nav">
       <ul class="nav__menu">
-        <li class="nav__menu__item"><a href="#">How it Works</a></li>
-        <li class="nav__menu__item"><a routerLink="/about">About Us</a></li>
-        <li class="nav__menu__item"><a routerLink="/gallery">Gallery</a></li>
-        <li *ngIf="!isLoggedIn" class="nav__menu__item"><a (click)="login()">Login</a></li>
-        <li *ngIf="isLoggedIn" class="nav__menu__item"><a (click)="logout()">Logout</a></li>
-        <li *ngIf="isLoggedIn" class="nav__menu__item"><a (click)="profile()">Profile</a></li>
+        <li class="nav__menu__item grow"><a href="#">How it Works</a></li>
+        <li class="nav__menu__item grow"><a routerLink="/about">About Us</a></li>
+        <li class="nav__menu__item grow"><a routerLink="/gallery">Gallery</a></li>
+        <li *ngIf="!isLoggedIn" class="nav__menu__item grow"><a (click)="login()">Login</a></li>
+        <li *ngIf="isLoggedIn" class="nav__menu__item grow"><a (click)="logout()">Logout</a></li>
+        <li *ngIf="isLoggedIn" class="nav__menu__item grow"><a (click)="profile()">Profile</a></li>
       </ul>
     </div>
   </div>
