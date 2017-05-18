@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
 
   isLoggedIn:boolean = false;
   userID:string= "";
+  firstTimeUser:boolean=false;
 
 
   constructor (public AuthService: AuthService, private router: Router,
@@ -39,36 +40,43 @@ export class AppComponent implements OnInit{
        //navigate to profile page
      })
   }
+
+  setUser(){
+    this.firstTimeUser=true;
+    console.log(this.firstTimeUser);
+  }
   login(){
     this.AuthService.loginWithGoogle().then((data) =>{
-      //if they are new user add them
-      this.UserServiceService.getUserbyId(data.auth.uid).subscribe((data)=>{
-        if (!data.name){
+      //check if user exists
+      //if first time user write base data
+      firebase.database().ref('/users/' + data.auth.uid).once('value').then((snapshot)=>{
+        if(snapshot.val() === null){
           var info = {
-             "name": data.auth.displayName,
-             "photoURL": data.auth.photoURL,
-             "email": data.auth.email,
-             "postcard" : "not sent",
-             "partnerPostcard": "not received"
+            "name": data.auth.displayName,
+            "photoURL": data.auth.photoURL,
+            "email": data.auth.email,
+            "postcard" : "not sent",
+            "partnerPostcard": "not received"
           }
           this.UserServiceService.addUser(info, data.auth.uid);
         }
       });
+      if(this.firstTimeUser){
 
-//write data
-      // console.log(data.auth);
-      // //uid
-      // console.log(data.auth.uid);
-      // this.userID = data.auth.uid;
-      // //photoURL
-      // console.log(data.auth.photoURL);
-      // //email
-      // console.log(data.auth.email);
-      // //displayName
-      // console.log(data.auth.displayName);
+        var info = {
+          "name": data.auth.displayName,
+          "photoURL": data.auth.photoURL,
+          "email": data.auth.email,
+          "postcard" : "not sent",
+          "partnerPostcard": "not received"
+        }
+        this.UserServiceService.addUser(info, data.auth.uid);
+      }
+
       this.userID = data.auth.uid;
       this.router.navigate(['profile', data.auth.uid]);
       this.isLoggedIn = true;
+
     });
 
   }

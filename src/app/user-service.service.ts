@@ -33,7 +33,17 @@ export class UserServiceService {
   addUser(user, uid){
     return firebase.database().ref('users/'+uid).update(user);
   }
-
+  checkUserbyId(userId:string){
+    let exists:boolean = false
+    firebase.database().ref('/users/' + userId).once('value').then(function(snapshot){
+      if(snapshot.val() !== null){
+        exists=true;
+        console.log(exists, "asinside");
+      }
+    });
+    console.log(exists, "outsiede");
+    return exists;
+  }
   getUserbyId(userId: string){
     return this.angularFire.database.object('/users/' + userId);
   }
