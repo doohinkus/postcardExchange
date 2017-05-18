@@ -1,5 +1,8 @@
 <div class="panel profile" *ngIf="isLoggedIn">
   <div class="base-color bold">{{displayDate}}</div>
+  <div *ngIf="admin">
+    <a routerLink="/pair">Pair Users</a>
+  </div>
   <div class="profile__user">
    <img src="{{(loggedInUser | async)?.photoURL}}" alt="" />
    <div class="user__details">

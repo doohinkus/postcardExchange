@@ -14,6 +14,7 @@ import * as firebase from 'firebase';
 })
 export class ProfileComponent implements OnInit {
   userID;
+  admin:boolean = false;
 
   constructor(public AuthService: AuthService, private router: Router,
     public UserServiceService: UserServiceService, private af: AngularFire) {

@@ -32,6 +32,7 @@ export class UserDetailComponent implements OnInit {
   year:number;
   displayDate:any;
   emptyAddress:boolean = false;
+  admin:boolean = false;
 
   userToDisplay;
   constructor(
@@ -52,7 +53,7 @@ export class UserDetailComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.showDate();
+   this.showDate();
 
    this.route.params.forEach((urlParameters)=>{
     this.userId = urlParameters["id"];
@@ -61,6 +62,10 @@ export class UserDetailComponent implements OnInit {
    this.loggedInUser.subscribe((data)=>{
     this.updateMyPostcard(data.postcard);
     this.updatePartnerPostcard(data.partnerPostcard);
+    //if user is admin set admin to true
+    if(data.admin){
+      this.admin=true;
+    }
   //if user has been paired
     if (data.partners){
       this.loggedInUserPartner = this.userServiceService.getUserbyId(data.partners);
