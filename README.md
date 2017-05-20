@@ -1,6 +1,6 @@
 # PostcardExchange
 
-This app lets photographers exchange postcards with people all over the world. It uses firebase and Angular2. You will need nodeJS, a Google Firebase account, and angular-cli installed to run this project locally. You can view the live project at [my firebase site] (https://postcardexchange-1488491588529.firebaseapp.com/#/).
+This app lets photographers exchange postcards with people all over the world. It uses firebase and Angular2. You will need nodeJS, a Google Firebase account, and angular-cli installed to run this project locally. You can view the live project at [my firebase site](https://postcardexchange-1488491588529.firebaseapp.com/#/).
 
 ## Running locally
 
